@@ -9,7 +9,7 @@ module io.ballerina.quoter {
     requires spring.web;
     requires spring.boot;
     requires spring.boot.autoconfigure;
-    requires spring.core;
+    requires spring.context;
 
     opens io.ballerinalang.quoter;
     opens io.ballerinalang.quoter.config;
