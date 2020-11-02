@@ -17,13 +17,12 @@
  */
 package io.ballerinalang.quoter.test.generator;
 
-import io.ballerinalang.quoter.test.AbstractQuoterTest;
 import org.testng.annotations.Test;
 
 /**
  * Test expressions to segment conversion.
  */
-public class SegmentFactoryExpressionsTest extends AbstractQuoterTest {
+public class SegmentFactoryExpressionsTest extends AbstractSegmentTest {
     @Test
     public void testAnonFunc() {
         testAssertionFiles("parser/expressions/anon-func", "anon_func_source_01");

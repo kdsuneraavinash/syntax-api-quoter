@@ -17,13 +17,12 @@
  */
 package io.ballerinalang.quoter.test.generator;
 
-import io.ballerinalang.quoter.test.AbstractQuoterTest;
 import org.testng.annotations.Test;
 
 /**
  * Test trivia to segment conversion.
  */
-public class SegmentFactoryTriviaTest extends AbstractQuoterTest {
+public class SegmentFactoryTriviaTest extends AbstractSegmentTest {
     @Test
     public void test() {
         testAssertionFiles("parser/trivia", "trivia_source_01");

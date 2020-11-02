@@ -18,13 +18,12 @@
 
 package io.ballerinalang.quoter.test.generator;
 
-import io.ballerinalang.quoter.test.AbstractQuoterTest;
 import org.testng.annotations.Test;
 
 /**
  * Test bbe examples to segment conversion.
  */
-public class SegmentFactoryBbeExamplesTest extends AbstractQuoterTest {
+public class SegmentFactoryBbeExamplesTest extends AbstractSegmentTest {
     @Test
     public void testAccessMutateJavaFields() {
         testAssertionFiles("bbe-examples", "access_mutate_java_fields");

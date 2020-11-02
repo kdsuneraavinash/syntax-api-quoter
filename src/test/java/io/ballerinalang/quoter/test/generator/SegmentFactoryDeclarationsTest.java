@@ -17,13 +17,12 @@
  */
 package io.ballerinalang.quoter.test.generator;
 
-import io.ballerinalang.quoter.test.AbstractQuoterTest;
 import org.testng.annotations.Test;
 
 /**
  * Test declarations to segment conversion.
  */
-public class SegmentFactoryDeclarationsTest extends AbstractQuoterTest {
+public class SegmentFactoryDeclarationsTest extends AbstractSegmentTest {
 
     @Test
     public void testAnnotationDecl() {

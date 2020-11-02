@@ -17,13 +17,12 @@
  */
 package io.ballerinalang.quoter.test.generator;
 
-import io.ballerinalang.quoter.test.AbstractQuoterTest;
 import org.testng.annotations.Test;
 
 /**
  * Test types to segment conversion.
  */
-public class SegmentFactoryTypesTest extends AbstractQuoterTest {
+public class SegmentFactoryTypesTest extends AbstractSegmentTest {
     @Test
     public void testArrayType() {
         testAssertionFiles("parser/types/array-type", "array_type_assert_01");

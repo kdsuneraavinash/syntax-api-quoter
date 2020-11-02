@@ -15,58 +15,36 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package io.ballerinalang.quoter.test;
+package io.ballerinalang.quoter.test.generator;
 
 import io.ballerina.compiler.syntax.tree.Node;
 import io.ballerina.compiler.syntax.tree.SyntaxTree;
 import io.ballerina.tools.text.TextDocument;
 import io.ballerina.tools.text.TextDocuments;
-import io.ballerinalang.quoter.QuoterException;
 import io.ballerinalang.quoter.config.QuoterConfig;
 import io.ballerinalang.quoter.formatter.SegmentFormatter;
 import io.ballerinalang.quoter.segment.Segment;
 import io.ballerinalang.quoter.segment.factories.NodeSegmentFactory;
+import io.ballerinalang.quoter.test.TemplateCode;
+import io.ballerinalang.quoter.test.TestQuoterConfig;
+import io.ballerinalang.quoter.utils.FileReaderUtils;
 import net.openhft.compiler.CachedCompiler;
 import org.testng.Assert;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Objects;
-import java.util.Scanner;
 
 /**
  * Test Base class with several helper functions.
  */
-public class AbstractQuoterTest {
-    /**
-     * Reads a file from the test resource directory.
-     *
-     * @param path Path of the file. (root is test resources directory)
-     * @return Content of the file.
-     */
-    protected static String readResource(String path) {
-        ClassLoader classLoader = AbstractQuoterTest.class.getClassLoader();
-
-        try (InputStream inputStream = classLoader.getResourceAsStream(path)) {
-            if (inputStream == null) {
-                throw new QuoterException("File not found: " + path);
-            }
-            Scanner scanner = new Scanner(inputStream).useDelimiter("\\A");
-            return scanner.hasNext() ? scanner.next() : "";
-        } catch (IOException e) {
-            throw new QuoterException("Failed to read " + path + ". Error: " + e.getMessage(), e);
-        }
-    }
+public abstract class AbstractSegmentTest {
+    private static final String TEMPLATE_PACKAGE_NAME = "templatepkg.TemplateCodeImpl";
 
     /**
-     * Return the created segment tree root node from the file content.
+     * Return the created segment tree root node from the source code.
      *
-     * @param fileName File to parse.
-     * @param config   Configurations obj.
+     * @param sourceCode Content to parse.
+     * @param config     Configurations obj.
      * @return Root segment node.
      */
-    protected Segment getSegmentFromFile(String fileName, QuoterConfig config) {
-        String sourceCode = readResource(fileName);
+    protected Segment getSegment(String sourceCode, QuoterConfig config) {
         NodeSegmentFactory generator = NodeSegmentFactory.fromConfig(config);
 
         TextDocument sourceCodeDocument = TextDocuments.from(sourceCode);
@@ -77,26 +55,23 @@ public class AbstractQuoterTest {
     /**
      * Creates a segment tree and run it via dynamic class loading.
      *
-     * @param balFile      Input .bal source file path. (Root is the test resources)
+     * @param sourceCode   Input source code
      * @param formatter    Base formatter name to use.
      * @param templateFile Template to use for dynamic class loading.
      * @return Output from the generated code.
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
-    protected SyntaxTree createSegmentAndRun(String balFile, String formatter, String templateFile) {
+    protected SyntaxTree createSegmentAndRun(String sourceCode, String formatter, String templateFile) {
         try {
             int tabSpace = 2;
             QuoterConfig config = new TestQuoterConfig(templateFile, tabSpace, formatter);
-            Segment segment = getSegmentFromFile(balFile, config);
+            Segment segment = getSegment(sourceCode, config);
             String javaCode = SegmentFormatter.getFormatter(config).format(segment);
 
             ClassLoader classLoader = new ClassLoader() {
             };
             CachedCompiler compiler = new CachedCompiler(null, null);
-            Objects.requireNonNull(compiler);
-
-            String className = "templatepkg.TemplateCodeImpl";
-            Class templateCodeImpl = compiler.loadFromJava(classLoader, className, javaCode);
+            Class templateCodeImpl = compiler.loadFromJava(classLoader, TEMPLATE_PACKAGE_NAME, javaCode);
             TemplateCode templateCode = (TemplateCode) templateCodeImpl.getDeclaredConstructor().newInstance();
 
             return templateCode.getNode().syntaxTree();
@@ -108,16 +83,28 @@ public class AbstractQuoterTest {
     /**
      * Creates a segment tree and run it via dynamic class loading.
      * Then reads the name and check if the output from the generated code
-     * is the same as the file.
+     * is the same as the source code.
      *
-     * @param fileName     Name of the file to test.
+     * @param sourceCode   Input source code.
      * @param formatter    Base formatter name to use.
      * @param templateFile Template to use for dynamic class loading.
      */
-    protected void testForSameOutput(String fileName, String formatter, String templateFile) {
-        SyntaxTree tree = createSegmentAndRun(fileName, formatter, templateFile);
-        String targetCode = readResource(fileName);
-        Assert.assertEquals(tree.toSourceCode().trim(), targetCode.trim());
+    protected void testForGeneratedCode(String sourceCode, String formatter, String templateFile) {
+        sourceCode = sourceCode.trim();
+        SyntaxTree tree = createSegmentAndRun(sourceCode, formatter, templateFile);
+        Assert.assertEquals(tree.toSourceCode().trim(), sourceCode);
+    }
+
+    /**
+     * Tests if the generated code for the given source code (after being formatted with all the formatters)
+     * is valid and the generated code creates the same source code when run.
+     *
+     * @param sourceCode Input source code
+     */
+    protected void testAssertionContent(String sourceCode) {
+        testForGeneratedCode(sourceCode, "default", "template-default.java");
+        testForGeneratedCode(sourceCode, "variable", "template-variable.java");
+        testForGeneratedCode(sourceCode, "none", "template-default.java");
     }
 
     /**
@@ -129,8 +116,7 @@ public class AbstractQuoterTest {
      */
     protected void testAssertionFiles(String directory, String filePrefix) {
         String fileName = directory + "/" + filePrefix + ".bal";
-        testForSameOutput(fileName, "default", "template-default.java");
-        testForSameOutput(fileName, "variable", "template-variable.java");
-        testForSameOutput(fileName, "none", "template-default.java");
+        String sourceCode = FileReaderUtils.readFileAsResource(fileName).trim();
+        testAssertionContent(sourceCode);
     }
 }

@@ -17,13 +17,12 @@
  */
 package io.ballerinalang.quoter.test.generator;
 
-import io.ballerinalang.quoter.test.AbstractQuoterTest;
 import org.testng.annotations.Test;
 
 /**
  * Test misc to segment conversion.
  */
-public class SegmentFactoryMiscTest extends AbstractQuoterTest {
+public class SegmentFactoryMiscTest extends AbstractSegmentTest {
     @Test
     public void testAmbiguity() {
         testAssertionFiles("parser/misc/ambiguity", "ambiguity_source_01");
