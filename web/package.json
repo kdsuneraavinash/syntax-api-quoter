@@ -2,6 +2,8 @@
   "name": "quoter-web",
   "version": "0.1.0",
   "private": true,
+  "author": "ballerina.io",
+  "license": "Apache-2.0",
   "dependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -10,7 +12,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "BROWSER='google-chrome-stable' react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
