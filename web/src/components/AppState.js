@@ -1,6 +1,6 @@
 import React from "react";
 
-const SERVER_URL = "http://localhost:8080/generate";
+const SERVER_ENDPOINT = "/generate";
 
 /**
  *
@@ -10,7 +10,7 @@ const SERVER_URL = "http://localhost:8080/generate";
  * @returns {Promise<string>} Generated code
  */
 export const Fetch = async ({code, formatter, template}) => {
-    const url = `${SERVER_URL}?format=${formatter}&template=${template}`;
+    const url = `${SERVER_ENDPOINT}?format=${formatter}&template=${template}`;
     const response = await fetch(url, {
         method: 'POST',
         body: code,

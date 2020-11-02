@@ -16,6 +16,7 @@
  *  under the License.
  */
 plugins {
+    id "com.github.node-gradle.node" version "2.2.4"
     id 'org.springframework.boot' version '2.3.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
@@ -35,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    implementation('org.springframework.boot:spring-boot-starter-web'){
+    implementation('org.springframework.boot:spring-boot-starter-web') {
         exclude group: 'org.springframework.boot', module: 'pring-boot-starter-json'
     }
     implementation name: 'ballerina-parser-2.0.0-Preview6-SNAPSHOT'
@@ -52,13 +53,8 @@ dependencies {
     }
 }
 
-task quoter(type: JavaExec) {
-    main = "io.ballerinalang.quoter.QuoterCommandLine"
-    classpath = sourceSets.main.runtimeClasspath
-    if (project.hasProperty('rops')) {
-        //noinspection GroovyAssignabilityCheck
-        args(project.property('rops').split(' '))
-    }
+node {
+    nodeModulesDir = file("${project.projectDir}/web")
 }
 
 compileJava {
@@ -75,3 +71,25 @@ test {
         suites 'src/test/resources/testng.xml'
     }
 }
+
+task quoter(type: JavaExec) {
+    main = "io.ballerinalang.quoter.QuoterCommandLine"
+    classpath = sourceSets.main.runtimeClasspath
+    if (project.hasProperty('rops')) {
+        //noinspection GroovyAssignabilityCheck
+        args(project.property('rops').split(' '))
+    }
+}
+
+task copyWebResources(type: Copy) {
+    from "${projectDir}/web/build"
+    into "${buildDir}/resources/main/static"
+}
+
+task buildWeb (type: NpmTask) {
+    args = ['run', 'build']
+}
+
+buildWeb.dependsOn(npmInstall)
+compileJava.dependsOn(buildWeb)
+compileJava.dependsOn(copyWebResources)
