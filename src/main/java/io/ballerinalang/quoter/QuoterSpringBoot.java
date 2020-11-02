@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
 
+/**
+ * Spring web application entry point.
+ */
 @RestController
 @SpringBootApplication
 public class QuoterSpringBoot {
@@ -24,6 +27,14 @@ public class QuoterSpringBoot {
         SpringApplication.run(QuoterSpringBoot.class, args);
     }
 
+    /**
+     * Endpoint for the REST API call to generate code.
+     *
+     * @param formatterName REST parameter for the formatter (default/variable)
+     * @param useTemplate   REST parameter to denote whether to use formatter
+     * @param source        Source code string
+     * @return Generated source code. Error message if failed.
+     */
     @CrossOrigin(origins = FRONT_END_URL)
     @PostMapping(ENDPOINT)
     public String codeResponse(

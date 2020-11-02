@@ -16,6 +16,20 @@ This project will be useful for anyone who uses the Ballerina syntax API to crea
 Enter the ballerina source code on the left-hand side pane and press the button to generate the respective Java Syntax 
 API calls. The code can be copied to the clipboard using the copy button. Formatter can be changed via the settings button.
 
+To build and run the web project, run the gradle task `bootRun`.
+
+```bash
+$ ./gradlew bootRun
+```
+
+Or you may build the `war` file and then run the application.
+
+```bash
+$ ./gradlew build
+$ cd build/libs
+$ java -jar quoter-0.0.1-SNAPSHOT.war
+```
+
 ## 💻 Command Line Tool
 
 ### Basic Usage
@@ -60,7 +74,6 @@ Note that the `-Props` values will override these settings even if changed. All 
 relative to the project root.
 
 ```properties
-# suppress inspection "UnusedProperty" for whole file
 #Input source code file path
 external.input.file=input.bal
 #Output file path

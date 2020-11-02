@@ -81,15 +81,17 @@ task quoter(type: JavaExec) {
     }
 }
 
-task copyWebResources(type: Copy) {
-    from "${projectDir}/web/build"
-    into "${buildDir}/resources/main/static"
-}
-
 task buildWeb (type: NpmTask) {
     args = ['run', 'build']
 }
 
-buildWeb.dependsOn(npmInstall)
-compileJava.dependsOn(buildWeb)
+task copyWebResources(type: Copy) {
+    doFirst {
+        npmInstall
+        buildWeb
+    }
+    from "${projectDir}/web/build"
+    into "${buildDir}/resources/main/static"
+}
+
 compileJava.dependsOn(copyWebResources)
