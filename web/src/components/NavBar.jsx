@@ -25,15 +25,17 @@ function NavBar() {
                      src={logo}/>
                 <h5 className="text-white">Ballerina Syntax API Quoter</h5>
                 <div className="ml-auto d-none d-sm-block">
-                    <button className="btn btn-sm btn-link text-white mr-2"
+                    <button className="btn btn-link text-white mr-2"
                             data-toggle="tooltip" data-placement="bottom" title="Generated code copied!"
                             data-trigger="focus" onClick={copyToClipboard}>
                         <span className="fa fa-copy"/>
                     </button>
-
-                    <button className="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#optionsModal">
+                    <button className="btn btn-outline-light mr-2" data-toggle="modal" data-target="#optionsModal">
                         <span className="fa fa-cogs"/>&nbsp;
                         Settings
+                    </button>
+                    <button className="btn btn-outline-light" data-toggle="modal" data-target="#helpModal">
+                        <span className="fa fa-question-circle-o"/>
                     </button>
                 </div>
 

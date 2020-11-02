@@ -94,12 +94,10 @@ task buildWeb (type: NpmTask) {
 }
 
 task copyWebResources(type: Copy) {
-    doFirst {
-        npmInstall
-        buildWeb
-    }
     from "${projectDir}/web/build"
     into "${buildDir}/resources/main/static"
 }
 
+buildWeb.dependsOn(npmInstall)
+copyWebResources.dependsOn(buildWeb)
 compileJava.dependsOn(copyWebResources)
