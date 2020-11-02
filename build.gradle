@@ -62,6 +62,7 @@ dependencies {
 }
 
 node {
+    download = true
     nodeModulesDir = file("${project.projectDir}/web")
 }
 
