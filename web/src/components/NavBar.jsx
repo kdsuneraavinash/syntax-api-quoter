@@ -30,12 +30,12 @@ function NavBar() {
                             data-trigger="focus" onClick={copyToClipboard}>
                         <span className="fa fa-copy"/>
                     </button>
-                    <button className="btn btn-outline-light mr-2" data-toggle="modal" data-target="#optionsModal">
+                    <button className="btn btn-sm btn-outline-light mr-2" data-toggle="modal" data-target="#optionsModal">
                         <span className="fa fa-cogs"/>&nbsp;
                         Settings
                     </button>
-                    <button className="btn btn-outline-light" data-toggle="modal" data-target="#helpModal">
-                        <span className="fa fa-question-circle-o"/>
+                    <button className="btn btn-sm btn-outline-light" data-toggle="modal" data-target="#helpModal">
+                        <span className="fa fa-question"/>
                     </button>
                 </div>
 
