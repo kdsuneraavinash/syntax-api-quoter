@@ -19,21 +19,14 @@ package io.ballerinalang.quoter.config;
 
 import com.google.gson.Gson;
 import io.ballerinalang.quoter.BallerinaQuoter;
-import io.ballerinalang.quoter.QuoterException;
 import io.ballerinalang.quoter.utils.FileReaderUtils;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Base configuration file format.
@@ -93,18 +86,7 @@ public abstract class QuoterConfig {
      *
      * @param content The content to output.
      */
-    public void writeToOutputFile(String content) {
-        String outputFileName = getOrThrow(EXTERNAL_OUTPUT_FILE);
-        try (OutputStream outputStream = new FileOutputStream(outputFileName)) {
-            outputStream.write(content.getBytes(Charset.defaultCharset()));
-        } catch (IOException e) {
-            throw new QuoterException("Failed to write " + outputFileName + ". Error: " + e.getMessage(), e);
-        }
-
-        if (getBooleanOrThrow(EXTERNAL_OUTPUT_SYS_OUT)) {
-            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.INFO, content);
-        }
-    }
+    public abstract void writeToOutputFile(String content);
 
     /**
      * Get the node children config json specified in the configurations.

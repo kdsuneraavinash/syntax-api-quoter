@@ -59,4 +59,9 @@ public class TestQuoterConfig extends QuoterConfig {
     public String readTemplateFile() {
         return FileReaderUtils.readFileAsResource(getOrThrow(EXTERNAL_FORMATTER_TEMPLATE));
     }
+
+    @Override
+    public void writeToOutputFile(String content) {
+        throw new UnsupportedOperationException();
+    }
 }

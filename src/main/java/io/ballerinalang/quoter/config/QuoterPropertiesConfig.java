@@ -28,7 +28,7 @@ import java.util.Properties;
 /**
  * Singleton that represent a set of config properties loaded from a config file.
  */
-public class QuoterPropertiesConfig extends QuoterConfig {
+public abstract class QuoterPropertiesConfig extends QuoterConfig {
     protected static final String QUOTER_GEN_CONFIG_PROPERTIES = "quoter.properties";
     protected final Properties props;
 

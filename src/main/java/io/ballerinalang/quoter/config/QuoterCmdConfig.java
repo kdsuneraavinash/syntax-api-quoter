@@ -18,11 +18,18 @@
 
 package io.ballerinalang.quoter.config;
 
+import io.ballerinalang.quoter.QuoterException;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Configuration file for CLI application.
@@ -110,6 +117,20 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
                 return overrideGet(key, formatterName);
             default:
                 return super.getOrThrow(key);
+        }
+    }
+
+    @Override
+    public void writeToOutputFile(String content) {
+        String outputFileName = getOrThrow(EXTERNAL_OUTPUT_FILE);
+        try (OutputStream outputStream = new FileOutputStream(outputFileName)) {
+            outputStream.write(content.getBytes(Charset.defaultCharset()));
+        } catch (IOException e) {
+            throw new QuoterException("Failed to write " + outputFileName + ". Error: " + e.getMessage(), e);
+        }
+
+        if (getBooleanOrThrow(EXTERNAL_OUTPUT_SYS_OUT)) {
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.INFO, "\n\n" + content);
         }
     }
 
