@@ -35,17 +35,19 @@ $ java -jar quoter-0.0.1-SNAPSHOT.war
 ### Basic Usage
 
 Run the following command from the project root. It will parse the source code from the `input.bal` file and generate the 
-output code to `output.txt`.
+output code to `output.txt`. 
 
 ```bash
-$ ./gradlew -q quoter
+$ ./quoter
 ```
 
-You can override the default properties by the `-Props` argument. 
-The `-q` will silent gradle outputs so that the output from the application will be clearer.
+Note: If on Windows, use `quoter.bat` instead of `./quoter`. (For all the preceding examples as well)
+Or, you may use `./gradlew quoter -q -Pprops="[OPTIONS]"` to directly run the gradle task.
+
+You can override the default properties passing arguments. 
 
 ```bash
-usage: ./gradlew -q quoter -Props="[OPTIONS]"
+usage: ./quoter [OPTIONS]
  -i,--input <arg>          input file path
  -o,--output <arg>         output file path
  -s,--stdout               output to stdout
@@ -63,14 +65,14 @@ parameter. In the template, the content will be replaced with the `%s`.
 
 | Command                                                      | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `./gradlew -q quoter -Props="-f default"`                       | Override and use default formatter                           |
-| `./gradlew -q quoter -Props="-i code.bal -s true"`              | Read from `code.bal` and output generated code to standard output as well |
-| `./gradlew -q quoter -Props="-f template -t Template.java -p 2"` | Use the template formatter with `Template.java` as template and 2 as the starting tab space |
+| `./quoter -f default`                       | Override and use default formatter                           |
+| `./quoter -i code.bal -s true`              | Read from `code.bal` and output generated code to standard output as well |
+| `./quoter -f template -t Template.java -p 2`| Use the template formatter with `Template.java` as template and 2 as the starting tab space |
 
 ### Changing Default Properties
 
 Default properties can be changed via changing the [`quoter.properties`](src/main/resources/quoter.properties) file. 
-Note that the `-Props` values will override these settings even if changed. All the paths in this file will be 
+Note that the argument values will override these settings even if provided. All the paths in this file will be 
 relative to the project root.
 
 ```properties
@@ -100,6 +102,12 @@ of each node type. If the Syntax API is changed, this file should be updated.
 ```bash
 $ cd scripts
 $ python generate.py
+```
+
+or you may run the `quoter` command with `-g`.
+
+```bash
+$ ./quoter -g
 ```
 
 ## Implementation
