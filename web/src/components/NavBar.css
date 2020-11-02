@@ -1,0 +1,12 @@
+.navbar {
+    position: absolute;
+    height: 50px;
+    padding: 10px;
+    background: rgba(0, 150, 136, 0.8);
+    z-index: 9999;
+}
+
+.navbar-brand {
+    height: 40px;
+    margin-right: 15px;
+}

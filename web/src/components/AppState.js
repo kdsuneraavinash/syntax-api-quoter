@@ -1,0 +1,48 @@
+import React from "react";
+
+const SERVER_URL = "http://localhost:8080/generate";
+
+/**
+ *
+ * @param code Ballerina Code to Parse
+ * @param formatter Formatter type
+ * @param template Whether to use template
+ * @returns {Promise<string>} Generated code
+ */
+export const Fetch = async ({code, formatter, template}) => {
+    const url = `${SERVER_URL}?format=${formatter}&template=${template}`;
+    const response = await fetch(url, {
+        method: 'POST',
+        body: code,
+    });
+    return await response.text();
+}
+
+/**
+ * Initial app state.
+ */
+export const InitialState = {
+    code: "",
+    generated: "",
+    loading: false,
+    ide: {
+        theme: "vs"
+    },
+    options: {
+        formatter: "default",
+        template: true
+    }
+};
+
+/**
+ * Returns the created context containing the app state.
+ * The context contains state as well as state updating functions.
+ */
+export const AppStateContext = React.createContext({
+    state: InitialState,
+    setCode: () => null,
+    sendRequest: () => null,
+    setOptions: () => null,
+});
+
+export const AppStateProvider = AppStateContext.Provider;

@@ -1,0 +1,60 @@
+/**
+ VS Light theme
+ */
+.bg-vs.ballerina-code-editor {
+    background-color: #F2F3F4;
+}
+
+.bg-vs.ballerina-code-editor .monaco-editor .monaco-editor-background,
+.bg-vs.ballerina-code-editor .monaco-editor .margin {
+    background-color: #F2F3F4;
+}
+
+.bg-vs {
+    background: white;
+}
+
+/**
+ VS Dark theme
+ */
+.bg-vs-dark.ballerina-code-editor {
+    background-color: #333333;
+}
+
+.bg-vs-dark.ballerina-code-editor .monaco-editor .monaco-editor-background,
+.bg-vs-dark.ballerina-code-editor .monaco-editor .margin {
+    background-color: #333333;
+}
+
+.bg-vs-dark {
+    background: #1E1E1E;
+}
+
+/**
+ High Contrast theme
+ */
+.bg-hc-black.ballerina-code-editor {
+    background-color: #000;
+}
+
+.bg-hc-black.ballerina-code-editor .monaco-editor .monaco-editor-background,
+.bg-hc-black.ballerina-code-editor .monaco-editor .margin {
+    background-color: #000;
+}
+
+.bg-hc-black {
+    background: #000;
+}
+
+/**
+ Common styles
+ */
+.code-editor {
+    height: 95vh;
+    margin-top: 50px;
+    padding: 16px;
+}
+
+.ballerina-code-editor .monaco-editor .scroll-decoration {
+    box-shadow: none;
+}

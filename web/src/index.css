@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    font-family: Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.btn-primary {
+    background: rgb(0, 150, 136);
+}

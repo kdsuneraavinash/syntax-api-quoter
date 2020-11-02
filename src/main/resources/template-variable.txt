@@ -1,0 +1,9 @@
+import io.ballerina.compiler.syntax.tree.*;
+
+class QuoterTest {
+    public static void main(String[] args) {
+        %s
+
+        System.out.println(modulePartNode.toSourceCode());
+    }
+}
