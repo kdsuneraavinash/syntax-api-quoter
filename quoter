@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ "$#" -eq 0 ]; then
+  ./gradlew quoter -q -Pprops="$*"
+  exit
+fi
+
 if [ $1 = "-h" ]; then
   echo "usage: ./quoter [OPTIONS]"
   echo " -i,--input <arg>          input file path"
@@ -10,7 +15,10 @@ if [ $1 = "-h" ]; then
   echo " -t,--template <arg>       template to use (applicable only if use template is true)"
   echo " -p,--position <arg>       tab position to start (applicable only if use template is true)"
 elif [ $1 = "-g" ]; then
-  (cd scripts; python generate.py)
+  (
+    cd scripts
+    python generate.py
+  )
 else
   ./gradlew quoter -q -Pprops="$*"
 fi

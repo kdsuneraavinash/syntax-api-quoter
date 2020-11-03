@@ -63,6 +63,7 @@ dependencies {
 
 node {
     download = true
+    version = "10.23.0"
     nodeModulesDir = file("${project.projectDir}/web")
 }
 
@@ -101,4 +102,4 @@ task copyWebResources(type: Copy) {
 
 buildWeb.dependsOn(npmInstall)
 copyWebResources.dependsOn(buildWeb)
-compileJava.dependsOn(copyWebResources)
+war.dependsOn(copyWebResources)
