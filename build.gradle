@@ -49,7 +49,7 @@ dependencies {
         exclude group: 'org.springframework.boot', module: 'pring-boot-starter-json'
     }
 
-    testImplementation('org.testng:testng:6.14.3'){
+    testImplementation('org.testng:testng:6.14.3') {
         because("To test the core functionality")
     }
     testImplementation(group: 'net.openhft', name: 'compiler', version: '2.4.0') {
@@ -61,12 +61,20 @@ dependencies {
     }
 }
 
+test {
+    useTestNG() {
+        suites 'src/test/resources/testng.xml'
+    }
+}
+
+// Node Configuration
 node {
     download = true
     version = "10.23.0"
     nodeModulesDir = file("${project.projectDir}/web")
 }
 
+// Compile Configuration
 compileJava {
     doFirst {
         options.compilerArgs = [
@@ -76,12 +84,7 @@ compileJava {
     }
 }
 
-test {
-    useTestNG() {
-        suites 'src/test/resources/testng.xml'
-    }
-}
-
+// Quoter command
 task quoter(type: JavaExec) {
     main = "io.ballerinalang.quoter.QuoterCommandLine"
     classpath = sourceSets.main.runtimeClasspath
@@ -91,7 +94,21 @@ task quoter(type: JavaExec) {
     }
 }
 
-task buildWeb (type: NpmTask) {
+
+// Jar build command
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'io.ballerinalang.quoter.QuoterCommandLine'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar
+}
+
+// Web build command
+task buildWeb(type: NpmTask) {
     args = ['run', 'build']
 }
 
@@ -103,3 +120,4 @@ task copyWebResources(type: Copy) {
 buildWeb.dependsOn(npmInstall)
 copyWebResources.dependsOn(buildWeb)
 war.dependsOn(copyWebResources)
+war.dependsOn(fatJar)
