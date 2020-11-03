@@ -28,7 +28,7 @@ import static io.ballerinalang.quoter.config.QuoterConfig.EXTERNAL_FORMATTER_TAB
  */
 public class TemplateFormatter extends SegmentFormatter {
     private static final String NEWLINE_CHAR = "\n";
-    private static final String TAB_CHAR = "\t";
+    private static final String TAB_CHAR = "    ";
 
     private final SegmentFormatter baseFormatter;
     private final String baseTemplate;

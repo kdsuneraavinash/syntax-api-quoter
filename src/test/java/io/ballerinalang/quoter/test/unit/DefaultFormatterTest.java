@@ -26,29 +26,47 @@ public class DefaultFormatterTest {
     @Test
     public void testParenthesis() {
         String source = "A(B())";
-        String target = "A(\n\tB()\n)";
+        String target = "A(\n" +
+                "    B()\n" +
+                ")";
         assertTest(source, target);
 
         source = "A(B(C()))";
-        target = "A(\n\tB(\n\t\tC()\n\t)\n)";
+        target = "A(\n" +
+                "    B(\n" +
+                "        C()\n" +
+                "    )\n" +
+                ")";
         assertTest(source, target);
     }
 
     @Test
     public void testComma() {
         String source = "A(\"Hello\",\"Hi\")";
-        String target = "A(\n\t\"Hello\",\n\t\"Hi\"\n)";
+        String target = "A(\n" +
+                "    \"Hello\",\n" +
+                "    \"Hi\"\n" +
+                ")";
         assertTest(source, target);
     }
 
     @Test
     public void testCommaParenthesis() {
         String source = "A(B(),C())";
-        String target = "A(\n\tB(),\n\tC()\n)";
+        String target = "A(\n" +
+                "    B(),\n" +
+                "    C()\n" +
+                ")";
         assertTest(source, target);
 
         source = "A(B(),C(E()),D())";
-        target = "A(\n\tB(),\n\tC(\n\t\tE()\n\t),\n\tD()\n)";
+        target = "A(\n" +
+                "    B(),\n" +
+                "    C(\n" +
+                "        E()\n" +
+                "    ),\n" +
+                "    D()\n" +
+                ")";
         assertTest(source, target);
     }
 }

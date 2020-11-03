@@ -31,7 +31,7 @@ public class DefaultFormatter extends SegmentFormatter {
     private static final char QUOTE = '"';
     private static final char ESCAPE = '\\';
     private static final String NEWLINE_CHAR = "\n";
-    private static final String TAB_CHAR = "\t";
+    private static final String TAB_CHAR = "    ";
 
     /**
      * Check if there is a comma inside the current parenthesis.
