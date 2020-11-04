@@ -129,22 +129,27 @@ To change how the internal settings work, the `QuoterConfig` class can be used. 
 
 ### Command Line Application
 
-Entry point is on `QuoterCommandLine` class. This would create `QuoterCmdConfig` and pass it to the generating functions to get the necessary outputs. This uses Apache commons CLI tools to parse user inputs.
+Entry point is on `QuoterCommandLine` class in the `quoter-cli` module. This would create `QuoterCmdConfig` and pass it to the generating functions 
+to get the necessary outputs. This uses Apache commons CLI tools to parse user inputs.
 
 Run this application via,
 
 ```bash
-$ ./gradlew quoter
+$ cd quoter-cli
+$ ./quote
 ```
 
 ### Web Application
 
-Entry point is on `QuoterSpringBoot` class. This creates a `QuoterSpringConfig` and pass it to the generating functions. This `QuoterSpringConfig` class overrides the file writing/reading functionalities to read/write to a variable. Web application uses Java Spring Boot framework. Run this application by building the project and then running the generated `.war` file.
+Entry point is on `QuoterSpringBoot` class in the `quoter-server` module. This creates a `QuoterSpringConfig` and 
+pass it to the generating functions. This `QuoterSpringConfig` class overrides the file writing/reading functionalities 
+to read/write to a variable. Web application uses Java Spring Boot framework. Run this application by building the project 
+and then running the generated `.war` file.
 
 ```bash
-$ ./gradlew build
-$ cd build/libs
-$ java -jar quoter-0.0.1-SNAPSHOT.war
+$ ./gradlew quoter-server:build
+$ cd quoter-server/build/libs
+$ java -jar quoter-server-1.0-SNAPSHOT.war
 ```
 
 This would run the server in port 8080.

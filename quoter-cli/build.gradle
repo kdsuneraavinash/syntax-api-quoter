@@ -67,4 +67,3 @@ task fatJar(type: Jar) {
     with jar
 }
 
-jar.doLast { fatJar }

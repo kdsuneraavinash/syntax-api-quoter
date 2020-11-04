@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Run the task in a new shell
+# Remember to go back a directory first to find gradlew script
+run_task() {
+  (
+    ../gradlew quoter -q -Pprops="$*"
+  )
+}
+
+if [ "$#" -eq 0 ]; then
+  # No arguments case
+  run_task "$@"
+elif [ "$1" = "-h" ]; then
+  # Help message case
+  echo "usage: ./quote [OPTIONS]"
+  echo " -i,--input <arg>          input file path"
+  echo " -o,--output <arg>         output file path"
+  echo " -s,--stdout               output to stdout"
+  echo " -f,--formatter <arg>      formatter name (none,default,variable)"
+  echo " -u,--use-template <arg>   whether to use template (true/false)"
+  echo " -t,--template <arg>       template to use (applicable only if use template is true)"
+  echo " -p,--position <arg>       tab position to start (applicable only if use template is true)"
+else
+  # Any other parameter case
+  run_task "$@"
+fi
