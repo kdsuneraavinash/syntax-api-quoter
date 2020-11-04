@@ -31,11 +31,17 @@ import io.ballerina.quoter.test.TestQuoterConfig;
 import net.openhft.compiler.CachedCompiler;
 import org.testng.Assert;
 
+import java.security.AccessController;
+import java.security.PrivilegedAction;
+
 /**
  * Test Base class with several helper functions.
  */
 public abstract class AbstractSegmentTest {
     private static final String TEMPLATE_PACKAGE_NAME = "templatepkg.TemplateCodeImpl";
+
+    private static class SegmentClassLoader extends ClassLoader {
+    }
 
     /**
      * Return the created segment tree root node from the source code.
@@ -63,11 +69,18 @@ public abstract class AbstractSegmentTest {
         try {
             String javaCode = BallerinaQuoter.run(sourceCode, config);
 
-            ClassLoader classLoader = new ClassLoader() {
-            };
-            CachedCompiler compiler = new CachedCompiler(null, null);
-            Class templateCodeImpl = compiler.loadFromJava(classLoader, TEMPLATE_PACKAGE_NAME, javaCode);
-            TemplateCode templateCode = (TemplateCode) templateCodeImpl.getDeclaredConstructor().newInstance();
+            TemplateCode templateCode = AccessController.doPrivileged(
+                    (PrivilegedAction<TemplateCode>) () -> {
+                        try {
+                            ClassLoader classLoader = new SegmentClassLoader();
+                            CachedCompiler compiler = new CachedCompiler(null, null);
+                            Class templateCodeImpl = compiler.loadFromJava(classLoader, TEMPLATE_PACKAGE_NAME, javaCode);
+                            return (TemplateCode) templateCodeImpl.getDeclaredConstructor().newInstance();
+                        } catch (ReflectiveOperationException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+            );
 
             return templateCode.getNode().syntaxTree();
         } catch (Exception exception) {

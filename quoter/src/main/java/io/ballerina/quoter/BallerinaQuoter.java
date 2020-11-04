@@ -21,11 +21,11 @@ package io.ballerina.quoter;
 import io.ballerina.compiler.syntax.tree.Node;
 import io.ballerina.compiler.syntax.tree.SyntaxTree;
 import io.ballerina.quoter.config.QuoterConfig;
+import io.ballerina.quoter.formatter.SegmentFormatter;
+import io.ballerina.quoter.segment.Segment;
 import io.ballerina.quoter.segment.factories.NodeSegmentFactory;
 import io.ballerina.tools.text.TextDocument;
 import io.ballerina.tools.text.TextDocuments;
-import io.ballerina.quoter.formatter.SegmentFormatter;
-import io.ballerina.quoter.segment.Segment;
 
 /**
  * Ballerina Quoter programme main class.

@@ -18,9 +18,9 @@
 package io.ballerina.quoter.formatter;
 
 import io.ballerina.quoter.QuoterException;
-import io.ballerina.quoter.segment.factories.SegmentFactory;
 import io.ballerina.quoter.segment.NodeFactorySegment;
 import io.ballerina.quoter.segment.Segment;
+import io.ballerina.quoter.segment.factories.SegmentFactory;
 
 import java.util.HashMap;
 import java.util.Locale;

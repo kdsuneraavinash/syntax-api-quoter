@@ -12,6 +12,9 @@ import org.springframework.web.context.WebApplicationContext;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 
+import java.security.AccessController;
+import java.security.PrivilegedAction;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -22,6 +25,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = QuoterSpringBoot.class)
 public abstract class AbstractSpringTest extends AbstractTestNGSpringContextTests {
     private static final String TEMPLATE_PACKAGE_NAME = "templatepkg.TemplateCodeImpl";
+
+    private static class SegmentClassLoader extends ClassLoader {
+    }
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -45,11 +51,18 @@ public abstract class AbstractSpringTest extends AbstractTestNGSpringContextTest
     @SuppressWarnings({"unchecked", "rawtypes"})
     protected String runAndGetOutput(String javaCode) {
         try {
-            ClassLoader classLoader = new ClassLoader() {
-            };
-            CachedCompiler compiler = new CachedCompiler(null, null);
-            Class templateCodeImpl = compiler.loadFromJava(classLoader, TEMPLATE_PACKAGE_NAME, javaCode);
-            TemplateCode templateCode = (TemplateCode) templateCodeImpl.getDeclaredConstructor().newInstance();
+            TemplateCode templateCode = AccessController.doPrivileged(
+                    (PrivilegedAction<TemplateCode>) () -> {
+                        try {
+                            ClassLoader classLoader = new SegmentClassLoader();
+                            CachedCompiler compiler = new CachedCompiler(null, null);
+                            Class templateCodeImpl = compiler.loadFromJava(classLoader, TEMPLATE_PACKAGE_NAME, javaCode);
+                            return (TemplateCode) templateCodeImpl.getDeclaredConstructor().newInstance();
+                        } catch (ReflectiveOperationException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+            );
 
             return templateCode.getNode().syntaxTree().toSourceCode();
         } catch (Exception exception) {
@@ -72,6 +85,7 @@ public abstract class AbstractSpringTest extends AbstractTestNGSpringContextTest
 
         RequestBuilder postReq = post("/generate?template=false&format=" + formatterName).content(balCode);
 
+        assert mockMvc != null;
         String generatedCode = mockMvc.perform(postReq)
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("text/plain;charset=UTF-8"))
