@@ -1,4 +1,4 @@
-# The Quoter tool
+# The Quoter CLI tool
 
 > CLI application for the quoter tool.
 

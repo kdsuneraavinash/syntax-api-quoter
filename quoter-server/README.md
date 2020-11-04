@@ -1,4 +1,4 @@
-# The Quoter tool
+# The Quoter Web tool
 
 > Server with a React Frontend for the quoter tool.
 >

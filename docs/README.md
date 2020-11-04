@@ -1,4 +1,4 @@
-# Quoter Tool
+# Quoter Tool - Implementation
 
 > This document explains the implementation of the tool in detail.
 
