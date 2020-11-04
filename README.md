@@ -56,7 +56,7 @@ Remember that, in this case, input file is relative to the jar file location.
 ```bash
 $ ./gradlew quoter-cli:fatJar
 $ cd quoter-cli/build/libs
-$ java -jar quoter-cli-1.0-SNAPSHOT.jar
+$ java -jar quoter-cli-1.0-SNAPSHOT.jar [OPTIONS]
 ```
 
 You can override the default properties passing arguments. 
@@ -126,4 +126,4 @@ $ python generate.py
 
 ## Implementation
 
-For implementation details refer to [this document](docs/Design.md).
+For implementation details refer to [this document](docs/README.md).
