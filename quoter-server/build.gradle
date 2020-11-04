@@ -56,9 +56,7 @@ dependencies {
 }
 
 test {
-    useTestNG() {
-        suites 'src/test/resources/testng.xml'
-    }
+    useTestNG()
 }
 
 // Compile Configuration
@@ -91,3 +89,5 @@ task copyWebResources(type: Copy) {
 buildWeb.dependsOn(npmInstall)
 copyWebResources.dependsOn(buildWeb)
 compileJava.dependsOn(copyWebResources)
+
+ext.moduleName = 'io.quoter.application.server'

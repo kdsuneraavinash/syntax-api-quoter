@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package io.ballerina.quoter;
+package io.ballerina.quoter.test;
 
 import io.ballerina.quoter.config.QuoterConfig;
 

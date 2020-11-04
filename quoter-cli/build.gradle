@@ -67,3 +67,4 @@ task fatJar(type: Jar) {
     with jar
 }
 
+ext.moduleName = 'io.quoter.application.cli'

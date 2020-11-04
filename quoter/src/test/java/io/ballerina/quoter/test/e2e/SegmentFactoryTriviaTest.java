@@ -15,13 +15,16 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package io.ballerina.quoter;
+package io.ballerina.quoter.test.e2e;
 
-import io.ballerina.compiler.syntax.tree.Node;
+import org.testng.annotations.Test;
 
 /**
- * Template that will get populated in tests.
+ * Test trivia to segment conversion.
  */
-public interface TemplateCode {
-    Node getNode();
+public class SegmentFactoryTriviaTest extends AbstractSegmentTest {
+    @Test
+    public void test() {
+        testAssertionFiles("parser/trivia", "trivia_source_01");
+    }
 }

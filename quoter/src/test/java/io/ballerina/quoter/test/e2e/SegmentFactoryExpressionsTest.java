@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package io.ballerina.quoter.e2e;
+package io.ballerina.quoter.test.e2e;
 
 import org.testng.annotations.Test;
 

@@ -30,7 +30,7 @@ function testFunc() {
         test:assertFail(msg = "Error in calling multipart decoder");
     }
 
-    //TODO: Enable the following test once the relative path issue is fixed. Until then the encoder should be tested
+    //Enable the following test once the relative path issue is fixed. Until then the encoder should be tested
     //manually.
     //var response2 = httpEP->get("/multiparts/encode");
     //if (response2 is http:Response) {

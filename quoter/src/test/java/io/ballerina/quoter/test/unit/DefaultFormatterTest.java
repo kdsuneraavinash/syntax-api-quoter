@@ -1,4 +1,4 @@
-package io.ballerina.quoter.unit;
+package io.ballerina.quoter.test.unit;
 
 import io.ballerina.quoter.formatter.DefaultFormatter;
 import io.ballerina.quoter.segment.CodeSegment;

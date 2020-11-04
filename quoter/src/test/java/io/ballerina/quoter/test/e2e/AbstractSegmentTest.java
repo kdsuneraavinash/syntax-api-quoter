@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package io.ballerina.quoter.e2e;
+package io.ballerina.quoter.test.e2e;
 
 import io.ballerina.compiler.syntax.tree.Node;
 import io.ballerina.compiler.syntax.tree.SyntaxTree;
@@ -25,9 +25,9 @@ import io.ballerina.quoter.BallerinaQuoter;
 import io.ballerina.quoter.config.QuoterConfig;
 import io.ballerina.quoter.segment.Segment;
 import io.ballerina.quoter.segment.factories.NodeSegmentFactory;
-import io.ballerina.quoter.FileReaderUtils;
-import io.ballerina.quoter.TemplateCode;
-import io.ballerina.quoter.TestQuoterConfig;
+import io.ballerina.quoter.test.FileReaderUtils;
+import io.ballerina.quoter.test.TemplateCode;
+import io.ballerina.quoter.test.TestQuoterConfig;
 import net.openhft.compiler.CachedCompiler;
 import org.testng.Assert;
 

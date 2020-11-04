@@ -5,7 +5,7 @@ import ballerina/test;
 @test:Config {}
 function testFunc() {
 
-    //TODO: Enable the following tests once the relative path issue is fixed. Until then the encoder/decoder should be
+    //Enable the following tests once the relative path issue is fixed. Until then the encoder/decoder should be
     //tested manually.
 
     //http:Client httpEP1 = new("http://localhost:9090");

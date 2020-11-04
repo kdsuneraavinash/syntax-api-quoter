@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package io.ballerina.quoter.unit;
+package io.ballerina.quoter.test.unit;
 
 import io.ballerina.compiler.syntax.tree.SyntaxKind;
 import io.ballerina.quoter.segment.CodeSegment;

@@ -15,16 +15,19 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package io.ballerina.quoter.e2e;
+package io.ballerina.quoter.test.e2e;
 
 import org.testng.annotations.Test;
 
 /**
- * Test trivia to segment conversion.
+ * Test module declarations to segment conversion.
  */
-public class SegmentFactoryTriviaTest extends AbstractSegmentTest {
+public class SegmentFactoryModuleDeclarationsTest extends AbstractSegmentTest {
     @Test
-    public void test() {
-        testAssertionFiles("parser/trivia", "trivia_source_01");
+    public void testArrayType() {
+        testAssertionFiles("parser/module_declarations", "function_name_new");
+        testAssertionFiles("parser/module_declarations", "function_name_old");
+        testAssertionFiles("parser/module_declarations", "module_declarations_new");
+        testAssertionFiles("parser/module_declarations", "module_declarations_old");
     }
 }

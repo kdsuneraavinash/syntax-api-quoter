@@ -48,9 +48,7 @@ dependencies {
 }
 
 test {
-    useTestNG() {
-        suites 'src/test/resources/testng.xml'
-    }
+    useTestNG()
 }
 
 // Compile Configuration
@@ -63,4 +61,4 @@ compileJava {
     }
 }
 
-ext.moduleName = 'io.ballerinalang.quoter'
+ext.moduleName = 'io.ballerina.quoter'
