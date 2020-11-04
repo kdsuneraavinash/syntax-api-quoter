@@ -1,0 +1,1063 @@
+{
+  "ModulePartNode": [
+    "imports",
+    "members",
+    "eofToken"
+  ],
+  "ModuleMemberDeclarationNode": [],
+  "FunctionDefinitionNode": [
+    "metadata",
+    "qualifierList",
+    "functionKeyword",
+    "functionName",
+    "functionSignature",
+    "functionBody"
+  ],
+  "ImportDeclarationNode": [
+    "importKeyword",
+    "orgName",
+    "moduleName",
+    "version",
+    "prefix",
+    "semicolon"
+  ],
+  "ListenerDeclarationNode": [
+    "metadata",
+    "visibilityQualifier",
+    "listenerKeyword",
+    "typeDescriptor",
+    "variableName",
+    "equalsToken",
+    "initializer",
+    "semicolonToken"
+  ],
+  "TypeDefinitionNode": [
+    "metadata",
+    "visibilityQualifier",
+    "typeKeyword",
+    "typeName",
+    "typeDescriptor",
+    "semicolonToken"
+  ],
+  "ServiceDeclarationNode": [
+    "metadata",
+    "serviceKeyword",
+    "serviceName",
+    "onKeyword",
+    "expressions",
+    "serviceBody"
+  ],
+  "StatementNode": [],
+  "AssignmentStatementNode": [
+    "varRef",
+    "equalsToken",
+    "expression",
+    "semicolonToken"
+  ],
+  "CompoundAssignmentStatementNode": [
+    "lhsExpression",
+    "binaryOperator",
+    "equalsToken",
+    "rhsExpression",
+    "semicolonToken"
+  ],
+  "VariableDeclarationNode": [
+    "annotations",
+    "finalKeyword",
+    "typedBindingPattern",
+    "equalsToken",
+    "initializer",
+    "semicolonToken"
+  ],
+  "BlockStatementNode": [
+    "openBraceToken",
+    "statements",
+    "closeBraceToken"
+  ],
+  "BreakStatementNode": [
+    "breakToken",
+    "semicolonToken"
+  ],
+  "FailStatementNode": [
+    "failKeyword",
+    "expression",
+    "semicolonToken"
+  ],
+  "ExpressionStatementNode": [
+    "expression",
+    "semicolonToken"
+  ],
+  "ContinueStatementNode": [
+    "continueToken",
+    "semicolonToken"
+  ],
+  "ExternalFunctionBodyNode": [
+    "equalsToken",
+    "annotations",
+    "externalKeyword",
+    "semicolonToken"
+  ],
+  "IfElseStatementNode": [
+    "ifKeyword",
+    "condition",
+    "ifBody",
+    "elseBody"
+  ],
+  "ElseBlockNode": [
+    "elseKeyword",
+    "elseBody"
+  ],
+  "WhileStatementNode": [
+    "whileKeyword",
+    "condition",
+    "whileBody",
+    "onFailClause"
+  ],
+  "PanicStatementNode": [
+    "panicKeyword",
+    "expression",
+    "semicolonToken"
+  ],
+  "ReturnStatementNode": [
+    "returnKeyword",
+    "expression",
+    "semicolonToken"
+  ],
+  "LocalTypeDefinitionStatementNode": [
+    "annotations",
+    "typeKeyword",
+    "typeName",
+    "typeDescriptor",
+    "semicolonToken"
+  ],
+  "LockStatementNode": [
+    "lockKeyword",
+    "blockStatement",
+    "onFailClause"
+  ],
+  "ForkStatementNode": [
+    "forkKeyword",
+    "openBraceToken",
+    "namedWorkerDeclarations",
+    "closeBraceToken"
+  ],
+  "ForEachStatementNode": [
+    "forEachKeyword",
+    "typedBindingPattern",
+    "inKeyword",
+    "actionOrExpressionNode",
+    "blockStatement",
+    "onFailClause"
+  ],
+  "ExpressionNode": [],
+  "BinaryExpressionNode": [
+    "lhsExpr",
+    "operator",
+    "rhsExpr"
+  ],
+  "BracedExpressionNode": [
+    "openParen",
+    "expression",
+    "closeParen"
+  ],
+  "CheckExpressionNode": [
+    "checkKeyword",
+    "expression"
+  ],
+  "FieldAccessExpressionNode": [
+    "expression",
+    "dotToken",
+    "fieldName"
+  ],
+  "FunctionCallExpressionNode": [
+    "functionName",
+    "openParenToken",
+    "arguments",
+    "closeParenToken"
+  ],
+  "MethodCallExpressionNode": [
+    "expression",
+    "dotToken",
+    "methodName",
+    "openParenToken",
+    "arguments",
+    "closeParenToken"
+  ],
+  "MappingConstructorExpressionNode": [
+    "openBrace",
+    "fields",
+    "closeBrace"
+  ],
+  "IndexedExpressionNode": [
+    "containerExpression",
+    "openBracket",
+    "keyExpression",
+    "closeBracket"
+  ],
+  "TypeofExpressionNode": [
+    "typeofKeyword",
+    "expression"
+  ],
+  "UnaryExpressionNode": [
+    "unaryOperator",
+    "expression"
+  ],
+  "ComputedNameFieldNode": [
+    "openBracket",
+    "fieldNameExpr",
+    "closeBracket",
+    "colonToken",
+    "valueExpr"
+  ],
+  "ConstantDeclarationNode": [
+    "metadata",
+    "visibilityQualifier",
+    "constKeyword",
+    "typeDescriptor",
+    "variableName",
+    "equalsToken",
+    "initializer",
+    "semicolonToken"
+  ],
+  "ParameterNode": [],
+  "DefaultableParameterNode": [
+    "annotations",
+    "typeName",
+    "paramName",
+    "equalsToken",
+    "expression"
+  ],
+  "RequiredParameterNode": [
+    "annotations",
+    "typeName",
+    "paramName"
+  ],
+  "RestParameterNode": [
+    "annotations",
+    "typeName",
+    "ellipsisToken",
+    "paramName"
+  ],
+  "ImportOrgNameNode": [
+    "orgName",
+    "slashToken"
+  ],
+  "ImportPrefixNode": [
+    "asKeyword",
+    "prefix"
+  ],
+  "ImportVersionNode": [
+    "versionKeyword",
+    "versionNumber"
+  ],
+  "MappingFieldNode": [],
+  "SpecificFieldNode": [
+    "readonlyKeyword",
+    "fieldName",
+    "colon",
+    "valueExpr"
+  ],
+  "SpreadFieldNode": [
+    "ellipsis",
+    "valueExpr"
+  ],
+  "FunctionArgumentNode": [],
+  "NamedArgumentNode": [
+    "argumentName",
+    "equalsToken",
+    "expression"
+  ],
+  "PositionalArgumentNode": [
+    "expression"
+  ],
+  "RestArgumentNode": [
+    "ellipsis",
+    "expression"
+  ],
+  "ObjectTypeDescriptorNode": [
+    "objectTypeQualifiers",
+    "objectKeyword",
+    "openBrace",
+    "members",
+    "closeBrace"
+  ],
+  "ObjectConstructorExpressionNode": [
+    "annotations",
+    "objectTypeQualifiers",
+    "objectKeyword",
+    "typeReference",
+    "openBraceToken",
+    "members",
+    "closeBraceToken"
+  ],
+  "RecordTypeDescriptorNode": [
+    "recordKeyword",
+    "bodyStartDelimiter",
+    "fields",
+    "recordRestDescriptor",
+    "bodyEndDelimiter"
+  ],
+  "ReturnTypeDescriptorNode": [
+    "returnsKeyword",
+    "annotations",
+    "type"
+  ],
+  "NilTypeDescriptorNode": [
+    "openParenToken",
+    "closeParenToken"
+  ],
+  "OptionalTypeDescriptorNode": [
+    "typeDescriptor",
+    "questionMarkToken"
+  ],
+  "ObjectFieldNode": [
+    "metadata",
+    "visibilityQualifier",
+    "finalKeyword",
+    "typeName",
+    "fieldName",
+    "equalsToken",
+    "expression",
+    "semicolonToken"
+  ],
+  "RecordFieldNode": [
+    "metadata",
+    "readonlyKeyword",
+    "typeName",
+    "fieldName",
+    "questionMarkToken",
+    "semicolonToken"
+  ],
+  "RecordFieldWithDefaultValueNode": [
+    "metadata",
+    "readonlyKeyword",
+    "typeName",
+    "fieldName",
+    "equalsToken",
+    "expression",
+    "semicolonToken"
+  ],
+  "RecordRestDescriptorNode": [
+    "typeName",
+    "ellipsisToken",
+    "semicolonToken"
+  ],
+  "TypeReferenceNode": [
+    "asteriskToken",
+    "typeName",
+    "semicolonToken"
+  ],
+  "ServiceBodyNode": [
+    "openBraceToken",
+    "resources",
+    "closeBraceToken"
+  ],
+  "AnnotationNode": [
+    "atToken",
+    "annotReference",
+    "annotValue"
+  ],
+  "MetadataNode": [
+    "documentationString",
+    "annotations"
+  ],
+  "ModuleVariableDeclarationNode": [
+    "metadata",
+    "finalKeyword",
+    "typedBindingPattern",
+    "equalsToken",
+    "initializer",
+    "semicolonToken"
+  ],
+  "TypeTestExpressionNode": [
+    "expression",
+    "isKeyword",
+    "typeDescriptor"
+  ],
+  "ActionNode": [],
+  "RemoteMethodCallActionNode": [
+    "expression",
+    "rightArrowToken",
+    "methodName",
+    "openParenToken",
+    "arguments",
+    "closeParenToken"
+  ],
+  "ParameterizedTypeDescriptorNode": [
+    "parameterizedType",
+    "typeParameter"
+  ],
+  "NilLiteralNode": [
+    "openParenToken",
+    "closeParenToken"
+  ],
+  "AnnotationDeclarationNode": [
+    "metadata",
+    "visibilityQualifier",
+    "constKeyword",
+    "annotationKeyword",
+    "typeDescriptor",
+    "annotationTag",
+    "onKeyword",
+    "attachPoints",
+    "semicolonToken"
+  ],
+  "AnnotationAttachPointNode": [
+    "sourceKeyword",
+    "firstIdent",
+    "secondIdent"
+  ],
+  "XMLNamespaceDeclarationNode": [
+    "xmlnsKeyword",
+    "namespaceuri",
+    "asKeyword",
+    "namespacePrefix",
+    "semicolonToken"
+  ],
+  "ModuleXMLNamespaceDeclarationNode": [
+    "xmlnsKeyword",
+    "namespaceuri",
+    "asKeyword",
+    "namespacePrefix",
+    "semicolonToken"
+  ],
+  "FunctionBodyBlockNode": [
+    "openBraceToken",
+    "namedWorkerDeclarator",
+    "statements",
+    "closeBraceToken"
+  ],
+  "NamedWorkerDeclarationNode": [
+    "annotations",
+    "transactionalKeyword",
+    "workerKeyword",
+    "workerName",
+    "returnTypeDesc",
+    "workerBody"
+  ],
+  "NamedWorkerDeclarator": [
+    "workerInitStatements",
+    "namedWorkerDeclarations"
+  ],
+  "BasicLiteralNode": [
+    "literalToken"
+  ],
+  "TypeDescriptorNode": [],
+  "NameReferenceNode": [],
+  "SimpleNameReferenceNode": [
+    "name"
+  ],
+  "QualifiedNameReferenceNode": [
+    "modulePrefix",
+    "colon",
+    "identifier"
+  ],
+  "BuiltinSimpleNameReferenceNode": [
+    "name"
+  ],
+  "TrapExpressionNode": [
+    "trapKeyword",
+    "expression"
+  ],
+  "ListConstructorExpressionNode": [
+    "openBracket",
+    "expressions",
+    "closeBracket"
+  ],
+  "TypeCastExpressionNode": [
+    "ltToken",
+    "typeCastParam",
+    "gtToken",
+    "expression"
+  ],
+  "TypeCastParamNode": [
+    "annotations",
+    "type"
+  ],
+  "UnionTypeDescriptorNode": [
+    "leftTypeDesc",
+    "pipeToken",
+    "rightTypeDesc"
+  ],
+  "TableConstructorExpressionNode": [
+    "tableKeyword",
+    "keySpecifier",
+    "openBracket",
+    "rows",
+    "closeBracket"
+  ],
+  "KeySpecifierNode": [
+    "keyKeyword",
+    "openParenToken",
+    "fieldNames",
+    "closeParenToken"
+  ],
+  "ErrorTypeDescriptorNode": [
+    "errorKeywordToken",
+    "errorTypeParamsNode"
+  ],
+  "ErrorTypeParamsNode": [
+    "ltToken",
+    "parameter",
+    "gtToken"
+  ],
+  "StreamTypeDescriptorNode": [
+    "streamKeywordToken",
+    "streamTypeParamsNode"
+  ],
+  "StreamTypeParamsNode": [
+    "ltToken",
+    "leftTypeDescNode",
+    "commaToken",
+    "rightTypeDescNode",
+    "gtToken"
+  ],
+  "TypedescTypeDescriptorNode": [
+    "typedescKeywordToken",
+    "typedescTypeParamsNode"
+  ],
+  "LetExpressionNode": [
+    "letKeyword",
+    "letVarDeclarations",
+    "inKeyword",
+    "expression"
+  ],
+  "XmlTypeDescriptorNode": [
+    "xmlKeywordToken",
+    "xmlTypeParamsNode"
+  ],
+  "LetVariableDeclarationNode": [
+    "annotations",
+    "typedBindingPattern",
+    "equalsToken",
+    "expression"
+  ],
+  "TemplateExpressionNode": [
+    "type",
+    "startBacktick",
+    "content",
+    "endBacktick"
+  ],
+  "TemplateMemberNode": [],
+  "XMLItemNode": [],
+  "XMLElementNode": [
+    "startTag",
+    "content",
+    "endTag"
+  ],
+  "XMLElementTagNode": [],
+  "XMLStartTagNode": [
+    "ltToken",
+    "name",
+    "attributes",
+    "getToken"
+  ],
+  "XMLEndTagNode": [
+    "ltToken",
+    "slashToken",
+    "name",
+    "getToken"
+  ],
+  "XMLNameNode": [],
+  "XMLSimpleNameNode": [
+    "name"
+  ],
+  "XMLQualifiedNameNode": [
+    "prefix",
+    "colon",
+    "name"
+  ],
+  "XMLEmptyElementNode": [
+    "ltToken",
+    "name",
+    "attributes",
+    "slashToken",
+    "getToken"
+  ],
+  "InterpolationNode": [
+    "interpolationStartToken",
+    "expression",
+    "interpolationEndToken"
+  ],
+  "XMLTextNode": [
+    "content"
+  ],
+  "XMLAttributeNode": [
+    "attributeName",
+    "equalToken",
+    "value"
+  ],
+  "XMLAttributeValue": [
+    "startQuote",
+    "value",
+    "endQuote"
+  ],
+  "XMLComment": [
+    "commentStart",
+    "content",
+    "commentEnd"
+  ],
+  "XMLProcessingInstruction": [
+    "piStart",
+    "target",
+    "data",
+    "piEnd"
+  ],
+  "TableTypeDescriptorNode": [
+    "tableKeywordToken",
+    "rowTypeParameterNode",
+    "keyConstraintNode"
+  ],
+  "TypeParameterNode": [
+    "ltToken",
+    "typeNode",
+    "gtToken"
+  ],
+  "KeyTypeConstraintNode": [
+    "keyKeywordToken",
+    "typeParameterNode"
+  ],
+  "FunctionTypeDescriptorNode": [
+    "qualifierList",
+    "functionKeyword",
+    "functionSignature"
+  ],
+  "FunctionSignatureNode": [
+    "openParenToken",
+    "parameters",
+    "closeParenToken",
+    "returnTypeDesc"
+  ],
+  "AnonymousFunctionExpressionNode": [],
+  "ExplicitAnonymousFunctionExpressionNode": [
+    "annotations",
+    "qualifierList",
+    "functionKeyword",
+    "functionSignature",
+    "functionBody"
+  ],
+  "FunctionBodyNode": [],
+  "ExpressionFunctionBodyNode": [
+    "rightDoubleArrow",
+    "expression",
+    "semicolon"
+  ],
+  "TupleTypeDescriptorNode": [
+    "openBracketToken",
+    "memberTypeDesc",
+    "closeBracketToken"
+  ],
+  "ParenthesisedTypeDescriptorNode": [
+    "openParenToken",
+    "typedesc",
+    "closeParenToken"
+  ],
+  "NewExpressionNode": [],
+  "ExplicitNewExpressionNode": [
+    "newKeyword",
+    "typeDescriptor",
+    "parenthesizedArgList"
+  ],
+  "ImplicitNewExpressionNode": [
+    "newKeyword",
+    "parenthesizedArgList"
+  ],
+  "ParenthesizedArgList": [
+    "openParenToken",
+    "arguments",
+    "closeParenToken"
+  ],
+  "ClauseNode": [],
+  "IntermediateClauseNode": [],
+  "QueryConstructTypeNode": [
+    "keyword",
+    "keySpecifier"
+  ],
+  "FromClauseNode": [
+    "fromKeyword",
+    "typedBindingPattern",
+    "inKeyword",
+    "expression"
+  ],
+  "WhereClauseNode": [
+    "whereKeyword",
+    "expression"
+  ],
+  "LetClauseNode": [
+    "letKeyword",
+    "letVarDeclarations"
+  ],
+  "JoinClauseNode": [
+    "outerKeyword",
+    "joinKeyword",
+    "typedBindingPattern",
+    "inKeyword",
+    "expression",
+    "joinOnCondition"
+  ],
+  "OnClauseNode": [
+    "onKeyword",
+    "lhsExpression",
+    "equalsKeyword",
+    "rhsExpression"
+  ],
+  "LimitClauseNode": [
+    "limitKeyword",
+    "expression"
+  ],
+  "OnConflictClauseNode": [
+    "onKeyword",
+    "conflictKeyword",
+    "expression"
+  ],
+  "QueryPipelineNode": [
+    "fromClause",
+    "intermediateClauses"
+  ],
+  "SelectClauseNode": [
+    "selectKeyword",
+    "expression"
+  ],
+  "QueryExpressionNode": [
+    "queryConstructType",
+    "queryPipeline",
+    "selectClause",
+    "onConflictClause"
+  ],
+  "QueryActionNode": [
+    "queryPipeline",
+    "doKeyword",
+    "blockStatement"
+  ],
+  "IntersectionTypeDescriptorNode": [
+    "leftTypeDesc",
+    "bitwiseAndToken",
+    "rightTypeDesc"
+  ],
+  "ImplicitAnonymousFunctionParameters": [
+    "openParenToken",
+    "parameters",
+    "closeParenToken"
+  ],
+  "ImplicitAnonymousFunctionExpressionNode": [
+    "params",
+    "rightDoubleArrow",
+    "expression"
+  ],
+  "StartActionNode": [
+    "annotations",
+    "startKeyword",
+    "expression"
+  ],
+  "FlushActionNode": [
+    "flushKeyword",
+    "peerWorker"
+  ],
+  "SingletonTypeDescriptorNode": [
+    "simpleContExprNode"
+  ],
+  "MethodDeclarationNode": [
+    "metadata",
+    "qualifierList",
+    "functionKeyword",
+    "methodName",
+    "methodSignature",
+    "semicolon"
+  ],
+  "TypedBindingPatternNode": [
+    "typeDescriptor",
+    "bindingPattern"
+  ],
+  "BindingPatternNode": [],
+  "CaptureBindingPatternNode": [
+    "variableName"
+  ],
+  "WildcardBindingPatternNode": [
+    "underscoreToken"
+  ],
+  "ListBindingPatternNode": [
+    "openBracket",
+    "bindingPatterns",
+    "restBindingPattern",
+    "closeBracket"
+  ],
+  "MappingBindingPatternNode": [
+    "openBrace",
+    "fieldBindingPatterns",
+    "restBindingPattern",
+    "closeBrace"
+  ],
+  "FieldBindingPatternNode": [],
+  "FieldBindingPatternFullNode": [
+    "variableName",
+    "colon",
+    "bindingPattern"
+  ],
+  "FieldBindingPatternVarnameNode": [
+    "variableName"
+  ],
+  "RestBindingPatternNode": [
+    "ellipsisToken",
+    "variableName"
+  ],
+  "ErrorBindingPatternNode": [
+    "errorKeyword",
+    "typeReference",
+    "openParenthesis",
+    "argListBindingPatterns",
+    "closeParenthesis"
+  ],
+  "NamedArgBindingPatternNode": [
+    "argName",
+    "equalsToken",
+    "bindingPattern"
+  ],
+  "AsyncSendActionNode": [
+    "expression",
+    "rightArrowToken",
+    "peerWorker"
+  ],
+  "SyncSendActionNode": [
+    "expression",
+    "syncSendToken",
+    "peerWorker"
+  ],
+  "ReceiveActionNode": [
+    "leftArrow",
+    "receiveWorkers"
+  ],
+  "ReceiveFieldsNode": [
+    "openBrace",
+    "receiveFields",
+    "closeBrace"
+  ],
+  "RestDescriptorNode": [
+    "typeDescriptor",
+    "ellipsisToken"
+  ],
+  "DoubleGTTokenNode": [
+    "openGTToken",
+    "endGTToken"
+  ],
+  "TrippleGTTokenNode": [
+    "openGTToken",
+    "middleGTToken",
+    "endGTToken"
+  ],
+  "WaitActionNode": [
+    "waitKeyword",
+    "waitFutureExpr"
+  ],
+  "WaitFieldsListNode": [
+    "openBrace",
+    "waitFields",
+    "closeBrace"
+  ],
+  "WaitFieldNode": [
+    "fieldName",
+    "colon",
+    "waitFutureExpr"
+  ],
+  "AnnotAccessExpressionNode": [
+    "expression",
+    "annotChainingToken",
+    "annotTagReference"
+  ],
+  "OptionalFieldAccessExpressionNode": [
+    "expression",
+    "optionalChainingToken",
+    "fieldName"
+  ],
+  "ConditionalExpressionNode": [
+    "lhsExpression",
+    "questionMarkToken",
+    "middleExpression",
+    "colonToken",
+    "endExpression"
+  ],
+  "EnumDeclarationNode": [
+    "metadata",
+    "qualifier",
+    "enumKeywordToken",
+    "identifier",
+    "openBraceToken",
+    "enumMemberList",
+    "closeBraceToken"
+  ],
+  "EnumMemberNode": [
+    "metadata",
+    "identifier",
+    "equalToken",
+    "constExprNode"
+  ],
+  "ArrayTypeDescriptorNode": [
+    "memberTypeDesc",
+    "openBracket",
+    "arrayLength",
+    "closeBracket"
+  ],
+  "TransactionStatementNode": [
+    "transactionKeyword",
+    "blockStatement",
+    "onFailClause"
+  ],
+  "RollbackStatementNode": [
+    "rollbackKeyword",
+    "expression",
+    "semicolon"
+  ],
+  "RetryStatementNode": [
+    "retryKeyword",
+    "typeParameter",
+    "arguments",
+    "retryBody",
+    "onFailClause"
+  ],
+  "CommitActionNode": [
+    "commitKeyword"
+  ],
+  "TransactionalExpressionNode": [
+    "transactionalKeyword"
+  ],
+  "ServiceConstructorExpressionNode": [
+    "annotations",
+    "serviceKeyword",
+    "serviceBody"
+  ],
+  "ByteArrayLiteralNode": [
+    "type",
+    "startBacktick",
+    "content",
+    "endBacktick"
+  ],
+  "XMLNavigateExpressionNode": [],
+  "XMLFilterExpressionNode": [
+    "expression",
+    "xmlPatternChain"
+  ],
+  "XMLStepExpressionNode": [
+    "expression",
+    "xmlStepStart"
+  ],
+  "XMLNamePatternChainingNode": [
+    "startToken",
+    "xmlNamePattern",
+    "gtToken"
+  ],
+  "XMLAtomicNamePatternNode": [
+    "prefix",
+    "colon",
+    "name"
+  ],
+  "TypeReferenceTypeDescNode": [
+    "typeRef"
+  ],
+  "MatchStatementNode": [
+    "matchKeyword",
+    "condition",
+    "openBrace",
+    "matchClauses",
+    "closeBrace",
+    "onFailClause"
+  ],
+  "MatchClauseNode": [
+    "matchPatterns",
+    "matchGuard",
+    "rightDoubleArrow",
+    "blockStatement"
+  ],
+  "MatchGuardNode": [
+    "ifKeyword",
+    "expression"
+  ],
+  "DistinctTypeDescriptorNode": [
+    "distinctKeyword",
+    "typeDescriptor"
+  ],
+  "ListMatchPatternNode": [
+    "openBracket",
+    "matchPatterns",
+    "restMatchPattern",
+    "closeBracket"
+  ],
+  "RestMatchPatternNode": [
+    "ellipsisToken",
+    "varKeywordToken",
+    "variableName"
+  ],
+  "MappingMatchPatternNode": [
+    "openBraceToken",
+    "fieldMatchPatterns",
+    "restMatchPattern",
+    "closeBraceToken"
+  ],
+  "FieldMatchPatternNode": [
+    "fieldNameNode",
+    "colonToken",
+    "matchPattern"
+  ],
+  "ErrorMatchPatternNode": [
+    "errorKeyword",
+    "typeReference",
+    "openParenthesisToken",
+    "argListMatchPatternNode",
+    "closeParenthesisToken"
+  ],
+  "NamedArgMatchPatternNode": [
+    "identifier",
+    "equalToken",
+    "matchPattern"
+  ],
+  "DocumentationNode": [],
+  "MarkdownDocumentationNode": [
+    "documentationLines"
+  ],
+  "MarkdownDocumentationLineNode": [
+    "hashToken",
+    "documentElements"
+  ],
+  "MarkdownParameterDocumentationLineNode": [
+    "hashToken",
+    "plusToken",
+    "parameterName",
+    "minusToken",
+    "documentElements"
+  ],
+  "DocumentationReferenceNode": [
+    "referenceType",
+    "startBacktick",
+    "backtickContent",
+    "endBacktick"
+  ],
+  "OrderByClauseNode": [
+    "orderKeyword",
+    "byKeyword",
+    "orderKey"
+  ],
+  "OrderKeyNode": [
+    "expression",
+    "orderDirection"
+  ],
+  "OnFailClauseNode": [
+    "onKeyword",
+    "failKeyword",
+    "typeDescriptor",
+    "failErrorName",
+    "blockStatement"
+  ],
+  "DoStatementNode": [
+    "doKeyword",
+    "blockStatement",
+    "onFailClause"
+  ],
+  "ClassDefinitionNode": [
+    "metadata",
+    "visibilityQualifier",
+    "classTypeQualifiers",
+    "classKeyword",
+    "className",
+    "openBrace",
+    "members",
+    "closeBrace"
+  ]
+}

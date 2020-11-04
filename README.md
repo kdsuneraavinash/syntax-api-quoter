@@ -71,17 +71,18 @@ parameter. In the template, the content will be replaced with the `%s`.
 
 ### Changing Default Properties
 
-Default properties can be changed via changing the [`quoter.properties`](src/main/resources/quoter.properties) file. 
+Default properties can be changed via changing the [`quoter.properties`](quoter-cli/src/main/resources/quoter.properties) file. 
 Note that the argument values will override these settings even if provided. All the paths in this file will be 
 relative to the project root.
 
 ```properties
 #Input source code file path
-external.input.file=input.bal
+external.cli.input.file=input.bal
 #Output file path
-external.output.file=output.txt
+external.cli.output.file=output.txt
 #Whether to output to the stdout
-external.output.sys.out=true
+external.cli.output.sys.out=true
+
 #Default Formatter name to use
 external.formatter.name=default
 #Whether to use a template
@@ -92,7 +93,7 @@ external.formatter.template=template.txt
 external.formatter.tab.start=2
 ```
 
-The project relies on [`child-names.json`](src/main/resources/quoter.properties) file to get the names of the children 
+The project relies on [`child-names.json`](quoter/src/main/resources/quoter.properties) file to get the names of the children 
 of each node type. If the Syntax API is changed, this file should be updated.
  This can be done by running the `scripts/generate.py` file. This script will use the 
  `scripts/syntax_tree_descriptor.json` file to generate the required JSON files. 
