@@ -1,11 +1,8 @@
 # Quoter Web Frontend
 
 > Frontend application for Syntax API quoter. Created using React.
->
-> The Online version of the web tool can be found in 
-> [https://github.com/ballerina-platform/ballerina-lang](https://github.com/ballerina-platform/ballerina-lang).
 
-![Web tool screenshot](../docs/web.png)
+![Web tool screenshot](../../docs/web.png)
 
 ## Basic Usage
 

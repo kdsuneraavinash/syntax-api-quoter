@@ -23,6 +23,7 @@ import io.ballerina.quoter.BallerinaQuoter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -36,6 +37,13 @@ public abstract class QuoterConfig {
     public static final String EXTERNAL_FORMATTER_USE_TEMPLATE = "external.formatter.use.template";
     public static final String EXTERNAL_FORMATTER_TAB_START = "external.formatter.tab.start";
     public static final String EXTERNAL_FORMATTER_NAME = "external.formatter.name";
+
+    /**
+     * Cache map signature required for config parsing.
+     */
+    private static class CacheMap extends HashMap<String, List<String>> {
+        private static final long serialVersionUID = 42L;
+    }
 
     /**
      * Get the value assigned to the key.

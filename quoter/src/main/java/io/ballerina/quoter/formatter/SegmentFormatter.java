@@ -25,6 +25,10 @@ import io.ballerina.quoter.segment.Segment;
  * Base formatter.
  */
 public abstract class SegmentFormatter {
+    private static final String NONE_FORMATTER = "none";
+    private static final String VARIABLE_FORMATTER = "variable";
+    private static final String DEFAULT_FORMATTER = "default";
+
     /**
      * Creates a formatter based on the configuration option.
      * Creates a template formatter with the internal formatter if that option is set.
@@ -49,9 +53,8 @@ public abstract class SegmentFormatter {
      */
     protected static SegmentFormatter getInternalFormatter(QuoterConfig config) {
         String formatterName = config.getOrThrow(QuoterConfig.EXTERNAL_FORMATTER_NAME);
-        SegmentFormatterType formatterType = SegmentFormatterType.getSegmentFormatterType(formatterName);
-        switch (formatterType) {
-            case NO_FORMATTER:
+        switch (formatterName) {
+            case NONE_FORMATTER:
                 return new NoFormatter();
             case DEFAULT_FORMATTER:
                 return new DefaultFormatter();
