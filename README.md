@@ -7,7 +7,7 @@ This project will be useful for anyone who uses the Ballerina syntax API to crea
 
 ## 🌐 Web-Based tool
 
-> The Online version of the web tool can be found in [http://46.101.157.247/](http://46.101.157.247/).
+> The Online version of the web tool can be found in [demo site](http://quoter.kdsuneraavinash.me/).
 
 ![Web tool screenshot](docs/web.png)
 
