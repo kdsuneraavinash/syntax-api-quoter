@@ -15,37 +15,79 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 package io.quoter.application.cli;
 
 import io.ballerina.quoter.BallerinaQuoter;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import picocli.CommandLine;
+
+import java.util.concurrent.Callable;
+
 
 /**
  * CLI Entry point of the programme.
  */
-public class QuoterCommandLine {
-    private static final String HELP_MESSAGE = "./gradlew quoter -Props=\"[OPTIONS]\"";
+@CommandLine.Command(name = "ballerina syntax api quoter",
+        mixinStandardHelpOptions = true, version = "quoter shell version 0.0.1",
+        description = "Syntax API Quoter for Ballerina Language.")
+public class QuoterCommandLine implements Callable<Integer> {
+    @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal", "unused"})
+    @CommandLine.Option(names = {"-i", "--input"}, description = "input file path", required = true)
+    private String input;
 
-    public static void main(String[] args) throws ParseException {
-        Options options = QuoterCmdConfig.getCommandLineOptions();
-        CommandLineParser parser = new DefaultParser();
-        HelpFormatter formatter = new HelpFormatter();
-        CommandLine cmd;
+    @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
+    @CommandLine.Option(names = {"-o", "--output"}, description = "output file path")
+    private String output = "output.txt";
 
-        try {
-            cmd = parser.parse(options, args);
-            QuoterCmdConfig config = new QuoterCmdConfig(cmd);
-            String source = config.readInputFile();
-            String output = BallerinaQuoter.run(source, config);
-            config.writeToOutputFile(output);
-        } catch (ParseException e) {
-            formatter.printHelp(HELP_MESSAGE, options);
-            throw e;
-        }
+    @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
+    @CommandLine.Option(names = {"-s", "--stdout"}, description = "output to stdout")
+    private boolean stdout = true;
+
+    @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
+    @CommandLine.Option(names = {"-f", "--formatter"}, description = "formatter name")
+    private QuoterCmdConfig.CodeFormatter formatter = QuoterCmdConfig.CodeFormatter.DEFAULT;
+
+    @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
+    @CommandLine.Option(names = {"-u", "--use-template"}, description = "whether to use templates")
+    private boolean useTemplate = false;
+
+    @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
+    @CommandLine.Option(names = {"-t", "--template"},
+            description = "template to use (applicable only if use template is true)")
+    private String template = "template.txt";
+
+    @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
+    @CommandLine.Option(names = {"-p", "--position"},
+            description = "tab position to start (applicable only if use template is true)")
+    private int position = 2;
+
+    /**
+     * Launch the Quoter.
+     *
+     * @param args Optional arguments.
+     */
+    public static void main(String... args) {
+        int exitCode = new CommandLine(new QuoterCommandLine())
+                .setCaseInsensitiveEnumValuesAllowed(true).execute(args);
+        System.exit(exitCode);
+    }
+
+    @Override
+    public Integer call() {
+        QuoterCmdConfig configuration = new QuoterCmdConfig.Builder()
+                .inputFile(input)
+                .outputFile(output)
+                .outputSysOut(stdout)
+                .formatter(formatter)
+                .formatterUseTemplate(useTemplate)
+                .formatterTemplate(template)
+                .formatterTabStart(position)
+                .build();
+
+        String source = configuration.readInputFile();
+        String output = BallerinaQuoter.run(source, configuration);
+        configuration.writeToOutputFile(output);
+        return 0;
     }
 }
+

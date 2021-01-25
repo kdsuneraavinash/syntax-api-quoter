@@ -20,20 +20,16 @@ package io.quoter.application.cli;
 
 import io.ballerina.quoter.QuoterException;
 import io.ballerina.quoter.config.QuoterPropertiesConfig;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.Options;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.nio.charset.Charset;
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Configuration file for CLI application.
@@ -44,56 +40,56 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
     public static final String EXTERNAL_CLI_OUTPUT_SYS_OUT = "external.cli.output.sys.out";
     private static final String SPECIAL_DELIMITER = "\\A";
 
-    private final String formatterUseTemplate;
+    private final boolean formatterUseTemplate;
     private final String formatterTemplate;
-    private final String formatterTabStart;
+    private final int formatterTabStart;
     private final String inputFile;
     private final String outputFile;
-    private final String outputSysOut;
-    private final String formatterName;
+    private final boolean outputSysOut;
+    private final CodeFormatter formatter;
 
-    public QuoterCmdConfig(CommandLine cmd) {
-        this.formatterUseTemplate = cmd.getOptionValue(CmdOption.USE_TEMPLATE.option());
-        this.formatterTemplate = cmd.getOptionValue(CmdOption.TEMPLATE.option());
-        this.formatterTabStart = cmd.getOptionValue(CmdOption.POSITION.option());
-        this.inputFile = cmd.getOptionValue(CmdOption.INPUT.option());
-        this.outputFile = cmd.getOptionValue(CmdOption.OUTPUT.option());
-        this.outputSysOut = cmd.getOptionValue(CmdOption.STDOUT.option());
-        this.formatterName = cmd.getOptionValue(CmdOption.FORMATTER.option());
+    private QuoterCmdConfig(Builder builder) {
+        this.inputFile = builder.inputFile;
+        this.outputFile = builder.outputFile;
+        this.outputSysOut = builder.outputSysOut;
+        this.formatter = builder.formatter;
+        this.formatterUseTemplate = builder.formatterUseTemplate;
+        this.formatterTemplate = builder.formatterTemplate;
+        this.formatterTabStart = builder.formatterTabStart;
     }
 
     /**
-     * Generate the CLI options.
+     * Reads a file path content from project root.
      *
-     * @return Generated CLI options.
+     * @param path path of the file. (root is the project root)
+     * @return Content of the file.
      */
-    public static Options getCommandLineOptions() {
-        Options options = new Options();
-        for (CmdOption op : CmdOption.values()) {
-            Option option = new Option(op.option(), op.name, true, op.description);
-            option.setRequired(false);
-            options.addOption(option);
+    private static String readFile(String path) {
+        try (InputStream inputStream = new FileInputStream(path)) {
+            Scanner scanner = new Scanner(inputStream, Charset.defaultCharset()).useDelimiter(SPECIAL_DELIMITER);
+            return scanner.hasNext() ? scanner.next() : "";
+        } catch (IOException e) {
+            throw new QuoterException("Failed to read " + path + ". Error: " + e.getMessage(), e);
         }
-        return options;
     }
 
     @Override
     public String getOrThrow(String key) {
         switch (key) {
             case EXTERNAL_FORMATTER_USE_TEMPLATE:
-                return overrideGet(key, formatterUseTemplate);
+                return String.valueOf(formatterUseTemplate);
             case EXTERNAL_FORMATTER_TEMPLATE:
-                return overrideGet(key, formatterTemplate);
+                return formatterTemplate;
             case EXTERNAL_FORMATTER_TAB_START:
-                return overrideGet(key, formatterTabStart);
+                return String.valueOf(formatterTabStart);
             case EXTERNAL_CLI_INPUT_FILE:
-                return overrideGet(key, inputFile);
+                return inputFile;
             case EXTERNAL_CLI_OUTPUT_FILE:
-                return overrideGet(key, outputFile);
+                return outputFile;
             case EXTERNAL_CLI_OUTPUT_SYS_OUT:
-                return overrideGet(key, outputSysOut);
+                return String.valueOf(outputSysOut);
             case EXTERNAL_FORMATTER_NAME:
-                return overrideGet(key, formatterName);
+                return formatter.name;
             default:
                 return super.getOrThrow(key);
         }
@@ -128,38 +124,77 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
         }
 
         if (getBooleanOrThrow(EXTERNAL_CLI_OUTPUT_SYS_OUT)) {
-            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.INFO, "\n\n" + content);
+            PrintStream outStream = System.out;
+            outStream.println(content);
         }
     }
 
     /**
-     * Get the value assigned to a key from either config file
-     * or a overridden value.
-     * If overridden value is null, reads from the config file instead.
-     *
-     * @param key      Property key
-     * @param override Value to override the config file value with
-     * @return Value assigned to key
+     * Code formatter to use in the formatter.
      */
-    private String overrideGet(String key, String override) {
-        if (Objects.isNull(override)) {
-            return super.getOrThrow(key);
+    public enum CodeFormatter {
+        NONE("none"),
+        DEFAULT("default"),
+        TEMPLATE("template"),
+        VARIABLE("variable");
+
+        private final String name;
+
+        CodeFormatter(String name) {
+            this.name = name;
         }
-        return override;
     }
 
     /**
-     * Reads a file path content from project root.
-     *
-     * @param path path of the file. (root is the project root)
-     * @return Content of the file.
+     * Builder for cmd config class.
      */
-    private static String readFile(String path) {
-        try (InputStream inputStream = new FileInputStream(path)) {
-            Scanner scanner = new Scanner(inputStream, Charset.defaultCharset()).useDelimiter(SPECIAL_DELIMITER);
-            return scanner.hasNext() ? scanner.next() : "";
-        } catch (IOException e) {
-            throw new QuoterException("Failed to read " + path + ". Error: " + e.getMessage(), e);
+    public static class Builder {
+        private String inputFile;
+        private String outputFile;
+        private boolean outputSysOut;
+        private CodeFormatter formatter;
+        private boolean formatterUseTemplate;
+        private String formatterTemplate;
+        private int formatterTabStart;
+
+        public Builder inputFile(String inputFile) {
+            this.inputFile = inputFile;
+            return Builder.this;
+        }
+
+        public Builder outputFile(String outputFile) {
+            this.outputFile = outputFile;
+            return Builder.this;
+        }
+
+        public Builder outputSysOut(boolean outputSysOut) {
+            this.outputSysOut = outputSysOut;
+            return Builder.this;
+        }
+
+        public Builder formatter(CodeFormatter formatter) {
+            this.formatter = formatter;
+            return Builder.this;
+        }
+
+        public Builder formatterUseTemplate(boolean formatterUseTemplate) {
+            this.formatterUseTemplate = formatterUseTemplate;
+            return Builder.this;
+        }
+
+        public Builder formatterTemplate(String formatterTemplate) {
+            this.formatterTemplate = formatterTemplate;
+            return Builder.this;
+        }
+
+        public Builder formatterTabStart(int formatterTabStart) {
+            this.formatterTabStart = formatterTabStart;
+            return Builder.this;
+        }
+
+        public QuoterCmdConfig build() {
+            Objects.requireNonNull(this.inputFile, "input file is required.");
+            return new QuoterCmdConfig(this);
         }
     }
 }

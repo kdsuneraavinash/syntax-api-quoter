@@ -1,4 +1,0 @@
-class Foo {
-    *;
-    string name;
-}

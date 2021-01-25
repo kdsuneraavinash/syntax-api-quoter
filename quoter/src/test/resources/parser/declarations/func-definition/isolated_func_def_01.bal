@@ -1,2 +1,0 @@
-isolated function foo1() {
-}

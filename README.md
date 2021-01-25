@@ -61,15 +61,24 @@ $ java -jar quoter-cli-1.0-SNAPSHOT.jar [OPTIONS]
 
 You can override the default properties passing arguments. 
 
-```bash
-usage: ./quote [OPTIONS]
- -i,--input <arg>          input file path
- -o,--output <arg>         output file path
- -s,--stdout               output to stdout
- -f,--formatter <arg>      formatter name (none,default,variable)
- -u,--use-template <arg>    whether to use template (true/false)
- -t,--template <arg>       template to use (applicable only if use template is true)
- -p,--position <arg>       tab position to start (applicable only if use template is true)
+```text
+Usage: quoter [-hsuV] [-f=<formatter>] -i=<input> [-o=<output>] [-p=<position>]
+              [-t=<template>] [-x=<timeOut>]
+Syntax API Quoter for Ballerina Language.
+  -f, --formatter=<formatter>
+                             formatter name
+  -h, --help                 Show this help message and exit.
+  -i, --input=<input>        input file path
+  -o, --output=<output>      output file path
+  -p, --position=<position>  tab position to start (applicable only if use
+                               template is true)
+  -s, --stdout               output to stdout
+  -t, --template=<template>  template to use (applicable only if use template
+                               is true)
+  -u, --use-template         whether to use templates
+  -V, --version              Print version information and exit.
+  -x, --time-out=<timeOut>   time out for parsing
+
 ```
 
 If `--use-template` is set to true, the specified `--template` template file will be used along with the content 
@@ -111,18 +120,7 @@ external.formatter.tab.start=2
 
 ## Generating child names JSON
 
-Application projects rely on [`child-names.json`](quoter/src/main/resources/quoter.properties) file to get the names of the children 
-of each node type. If the Syntax API is changed, this file should be updated.
- This can be done by running the `scripts/generate.py` file. This script will use the 
- `scripts/syntax_tree_descriptor.json` file to generate the required JSON files. 
- The newest version of `syntax_tree_descriptor.json` can be acquired from the 
- [`treegen source`](https://github.com/ballerina-platform/ballerina-lang/blob/master/compiler/ballerina-treegen/src/main/resources/syntax_tree_descriptor.json).
-
-```bash
-$ cd scripts
-$ curl https://raw.githubusercontent.com/ballerina-platform/ballerina-lang/master/compiler/ballerina-treegen/src/main/resources/syntax_tree_descriptor.json -o syntax_tree_descriptor.json -s
-$ python generate.py
-```
+Application projects rely on [`syntax_tree_descriptor.json`](quoter/src/main/resources/quoter.properties) file to get the names of the children of each node type. If the Syntax API is changed, this file should be updated. Simply copy and put this file from [`treegen source`](https://github.com/ballerina-platform/ballerina-lang/blob/master/compiler/ballerina-treegen/src/main/resources/syntax_tree_descriptor.json).
 
 ## Implementation
 
