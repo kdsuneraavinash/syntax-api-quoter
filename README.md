@@ -111,18 +111,7 @@ external.formatter.tab.start=2
 
 ## Generating child names JSON
 
-Application projects rely on [`child-names.json`](quoter/src/main/resources/quoter.properties) file to get the names of the children 
-of each node type. If the Syntax API is changed, this file should be updated.
- This can be done by running the `scripts/generate.py` file. This script will use the 
- `scripts/syntax_tree_descriptor.json` file to generate the required JSON files. 
- The newest version of `syntax_tree_descriptor.json` can be acquired from the 
- [`treegen source`](https://github.com/ballerina-platform/ballerina-lang/blob/master/compiler/ballerina-treegen/src/main/resources/syntax_tree_descriptor.json).
-
-```bash
-$ cd scripts
-$ curl https://raw.githubusercontent.com/ballerina-platform/ballerina-lang/master/compiler/ballerina-treegen/src/main/resources/syntax_tree_descriptor.json -o syntax_tree_descriptor.json -s
-$ python generate.py
-```
+Application projects rely on [`syntax_tree_descriptor.json`](quoter/src/main/resources/quoter.properties) file to get the names of the children of each node type. If the Syntax API is changed, this file should be updated. Simply copy and put this file from [`treegen source`](https://github.com/ballerina-platform/ballerina-lang/blob/master/compiler/ballerina-treegen/src/main/resources/syntax_tree_descriptor.json).
 
 ## Implementation
 
