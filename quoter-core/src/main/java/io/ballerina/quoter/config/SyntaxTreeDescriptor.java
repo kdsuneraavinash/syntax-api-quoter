@@ -30,6 +30,10 @@ import java.util.Map;
 public class SyntaxTreeDescriptor {
     private List<Node> nodes;
 
+    /**
+     * Collects and returns child names from the descriptor.
+     * This will return a map of format NodeTypeName -> ChildrenParamsNames
+     */
     public Map<String, List<String>> getChildNames() {
         Map<String, List<String>> childNames = new HashMap<>();
         for (Node node : nodes) {

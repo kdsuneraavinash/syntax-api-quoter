@@ -15,6 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 package io.ballerina.quoter.formatter;
 
 import io.ballerina.quoter.QuoterException;
