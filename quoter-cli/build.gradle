@@ -33,9 +33,7 @@ repositories {
 
 dependencies {
     implementation project(":quoter-core")
-    implementation(group: 'commons-cli', name: 'commons-cli', version: '1.3.1') {
-        because("To handle command line arguments")
-    }
+    implementation(group: 'info.picocli', name: 'picocli', version: '4.5.2')
 }
 
 def mainCliClass = 'io.quoter.application.cli.QuoterCommandLine'
