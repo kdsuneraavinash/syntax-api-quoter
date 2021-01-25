@@ -32,8 +32,8 @@ repositories {
 }
 
 dependencies {
-    implementation name: 'ballerina-parser-2.0.0-Preview9-SNAPSHOT'
-    implementation name: 'ballerina-tools-api-2.0.0-Preview9-SNAPSHOT'
+    implementation name: 'ballerina-parser-2.0.0-alpha-SNAPSHOT'
+    implementation name: 'ballerina-tools-api-2.0.0-alpha-SNAPSHOT'
     implementation('com.google.code.gson:gson:2.8.6')
 
     testImplementation('org.testng:testng:6.14.3')

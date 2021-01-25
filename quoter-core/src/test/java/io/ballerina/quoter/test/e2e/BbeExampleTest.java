@@ -15,7 +15,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package io.ballerina.quoter.test.e2e;
 
 import org.testng.annotations.Test;
@@ -26,7 +25,7 @@ import org.testng.annotations.Test;
 public class BbeExampleTest extends AbstractSegmentTest {
     @Test
     public void testAccessMutateJavaFields() {
-        test("bbe-examples/access_mutate_java_fiel.balds");
+        test("bbe-examples/access_mutate_java_fields.bal");
     }
 
     @Test
@@ -42,11 +41,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     @Test
     public void testAnyType() {
         test("bbe-examples/any_type.bal");
-    }
-
-    @Test
-    public void testAnyTypeTest() {
-        test("bbe-examples/any_type_test.bal");
     }
 
     @Test
@@ -70,28 +64,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testAsyncTest() {
-        test("bbe-examples/async_test.bal");
-    }
-
-    @Test
     public void testBallerinaToOpenapi() {
         test("bbe-examples/ballerina_to_openapi.bal");
-    }
-
-    @Test
-    public void testBallerinaToOpenapiTest() {
-        test("bbe-examples/ballerina_to_openapi_test.bal");
-    }
-
-    @Test
-    public void testBasePathAndPath() {
-        test("bbe-examples/base_path_and_path.bal");
-    }
-
-    @Test
-    public void testBasePathAndPathTest() {
-        test("bbe-examples/base_path_and_path_test.bal");
     }
 
     @Test
@@ -102,11 +76,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     @Test
     public void testBasicHttpsListener() {
         test("bbe-examples/basic_https_listener.bal");
-    }
-
-    @Test
-    public void testBasicHttpsListenerClientTest() {
-        test("bbe-examples/basic_https_listener_client_te.balst");
     }
 
     @Test
@@ -127,11 +96,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     @Test
     public void testCache() {
         test("bbe-examples/cache.bal");
-    }
-
-    @Test
-    public void testCacheTest() {
-        test("bbe-examples/cache_test.bal");
     }
 
     @Test
@@ -166,17 +130,12 @@ public class BbeExampleTest extends AbstractSegmentTest {
 
     @Test
     public void testCompoundAssignmentOperators() {
-        test("bbe-examples/compound_assignment_operato.balrs");
+        test("bbe-examples/compound_assignment_operators.bal");
     }
 
     @Test
     public void testConfigApi() {
         test("bbe-examples/config_api.bal");
-    }
-
-    @Test
-    public void testConfigApiTest() {
-        test("bbe-examples/config_api_test.bal");
     }
 
     @Test
@@ -190,11 +149,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testContentBasedRoutingTest() {
-        test("bbe-examples/content_based_routing_test.bal");
-    }
-
-    @Test
     public void testCookieServer() {
         test("bbe-examples/cookie_server.bal");
     }
@@ -205,11 +159,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testCounterMetricsTest() {
-        test("bbe-examples/counter_metrics_test.bal");
-    }
-
-    @Test
     public void testCreateJavaObjects() {
         test("bbe-examples/create_java_objects.bal");
     }
@@ -217,11 +166,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     @Test
     public void testCrypto() {
         test("bbe-examples/crypto.bal");
-    }
-
-    @Test
-    public void testCryptoTest() {
-        test("bbe-examples/crypto_test.bal");
     }
 
     @Test
@@ -241,7 +185,7 @@ public class BbeExampleTest extends AbstractSegmentTest {
 
     @Test
     public void testDifferentPayloadTypes() {
-        test("bbe-examples/different_payload_typ.bales");
+        test("bbe-examples/different_payload_types.bal");
     }
 
     @Test
@@ -266,7 +210,7 @@ public class BbeExampleTest extends AbstractSegmentTest {
 
     @Test
     public void testErrorDestructureBindingPattern() {
-        test("bbe-examples/error_destructure_binding_patte.balrn");
+        test("bbe-examples/error_destructure_binding_pattern.bal");
     }
 
     @Test
@@ -276,7 +220,7 @@ public class BbeExampleTest extends AbstractSegmentTest {
 
     @Test
     public void testErrorHandlingInSinglePlace() {
-        test("bbe-examples/error_handling_in_single_pla.balce");
+        test("bbe-examples/error_handling_in_single_place.bal");
     }
 
     @Test
@@ -290,11 +234,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testFailTest() {
-        test("bbe-examples/fail_test.bal");
-    }
-
-    @Test
     public void testFile() {
         test("bbe-examples/file.bal");
     }
@@ -302,11 +241,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     @Test
     public void testFilepath() {
         test("bbe-examples/filepath.bal");
-    }
-
-    @Test
-    public void testFilepathTest() {
-        test("bbe-examples/filepath_test.bal");
     }
 
     @Test
@@ -325,11 +259,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testFunctionPointersTest() {
-        test("bbe-examples/function_pointers_test.bal");
-    }
-
-    @Test
     public void testFunctionalIteration() {
         test("bbe-examples/functional_iteration.bal");
     }
@@ -341,17 +270,17 @@ public class BbeExampleTest extends AbstractSegmentTest {
 
     @Test
     public void testFunctionsWithDefaultableParameters() {
-        test("bbe-examples/functions_with_defaultable_paramete.balrs");
+        test("bbe-examples/functions_with_defaultable_parameters.bal");
     }
 
     @Test
     public void testFunctionsWithRequiredParameters() {
-        test("bbe-examples/functions_with_required_paramete.balrs");
+        test("bbe-examples/functions_with_required_parameters.bal");
     }
 
     @Test
     public void testFunctionsWithRestParameter() {
-        test("bbe-examples/functions_with_rest_paramet.baler");
+        test("bbe-examples/functions_with_rest_parameter.bal");
     }
 
     @Test
@@ -360,38 +289,23 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testGaugeMetricsTest() {
-        test("bbe-examples/gauge_metrics_test.bal");
-    }
-
-    @Test
     public void testGrpcBidirectionalStreamingService() {
-        test("bbe-examples/grpc_bidirectional_streaming_servi.balce");
+        test("bbe-examples/grpc_bidirectional_streaming_service.bal");
     }
 
     @Test
     public void testGrpcBidirectionalStreamingServiceClient() {
-        test("bbe-examples/grpc_bidirectional_streaming_service_clie.balnt");
-    }
-
-    @Test
-    public void testGrpcBidirectionalStreamingTest() {
-        test("bbe-examples/grpc_bidirectional_streaming_te.balst");
+        test("bbe-examples/grpc_bidirectional_streaming_service_client.bal");
     }
 
     @Test
     public void testGrpcClientStreamingService() {
-        test("bbe-examples/grpc_client_streaming_servi.balce");
+        test("bbe-examples/grpc_client_streaming_service.bal");
     }
 
     @Test
     public void testGrpcClientStreamingServiceClient() {
-        test("bbe-examples/grpc_client_streaming_service_clie.balnt");
-    }
-
-    @Test
-    public void testGrpcClientStreamingTest() {
-        test("bbe-examples/grpc_client_streaming_test.bal");
+        test("bbe-examples/grpc_client_streaming_service_client.bal");
     }
 
     @Test
@@ -401,27 +315,17 @@ public class BbeExampleTest extends AbstractSegmentTest {
 
     @Test
     public void testGrpcSecuredUnaryServiceClient() {
-        test("bbe-examples/grpc_secured_unary_service_clie.balnt");
-    }
-
-    @Test
-    public void testGrpcSecuredUnaryTest() {
-        test("bbe-examples/grpc_secured_unary_test.bal");
+        test("bbe-examples/grpc_secured_unary_service_client.bal");
     }
 
     @Test
     public void testGrpcServerStreamingService() {
-        test("bbe-examples/grpc_server_streaming_servi.balce");
+        test("bbe-examples/grpc_server_streaming_service.bal");
     }
 
     @Test
     public void testGrpcServerStreamingServiceClient() {
-        test("bbe-examples/grpc_server_streaming_service_clie.balnt");
-    }
-
-    @Test
-    public void testGrpcServerStreamingTest() {
-        test("bbe-examples/grpc_server_streaming_test.bal");
+        test("bbe-examples/grpc_server_streaming_service_client.bal");
     }
 
     @Test
@@ -431,37 +335,23 @@ public class BbeExampleTest extends AbstractSegmentTest {
 
     @Test
     public void testGrpcUnaryBlockingServiceClient() {
-        test("bbe-examples/grpc_unary_blocking_service_clie.balnt");
-    }
-
-    @Test
-    public void testGrpcUnaryBlockingTest() {
-        test("bbe-examples/grpc_unary_blocking_test.bal");
+        test("bbe-examples/grpc_unary_blocking_service_client.bal");
     }
 
     @Test
     public void testGrpcUnaryNonBlockingService() {
-        test("bbe-examples/grpc_unary_non_blocking_servi.balce");
+        test("bbe-examples/grpc_unary_non_blocking_service.bal");
     }
 
     @Test
     public void testGrpcUnaryNonBlockingServiceClient() {
-        test("bbe-examples/grpc_unary_non_blocking_service_clie.balnt");
-    }
-
-    @Test
-    public void testGrpcUnaryNonBlockingTest() {
-        test("bbe-examples/grpc_unary_non_blocking_test.bal");
+        // TODO: Github Link Invalid
+        // test("bbe-examples/grpc_unary_non_blocking_service_client.bal");
     }
 
     @Test
     public void testHeaderBasedRouting() {
         test("bbe-examples/header_based_routing.bal");
-    }
-
-    @Test
-    public void testHeaderBasedRoutingTest() {
-        test("bbe-examples/header_based_routing_test.bal");
     }
 
     @Test
@@ -475,18 +365,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testHelloWorldClientTest() {
-        test("bbe-examples/hello_world_client_test.bal");
-    }
-
-    @Test
     public void testHelloWorldParallel() {
         test("bbe-examples/hello_world_parallel.bal");
-    }
-
-    @Test
-    public void testHelloWorldParallelTest() {
-        test("bbe-examples/hello_world_parallel_test.bal");
     }
 
     @Test
@@ -495,28 +375,13 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testHelloWorldServiceTest() {
-        test("bbe-examples/hello_world_service_test.bal");
-    }
-
-    @Test
     public void testHttp100Continue() {
         test("bbe-examples/http_100_continue.bal");
     }
 
     @Test
-    public void testHttp100ContinueTest() {
-        test("bbe-examples/http_100_continue_test.bal");
-    }
-
-    @Test
     public void testHttp11To20ProtocolSwitch() {
-        test("bbe-examples/http_1_1_to_2_0_protocol_swit.balch");
-    }
-
-    @Test
-    public void testHttp11To20ProtocolSwitchTest() {
-        test("bbe-examples/http_1_1_to_2_0_protocol_switch_te.balst");
+        test("bbe-examples/http_1_1_to_2_0_protocol_switch.bal");
     }
 
     @Test
@@ -530,28 +395,13 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testHttpAccessLogsTest() {
-        test("bbe-examples/http_access_logs_test.bal");
-    }
-
-    @Test
     public void testHttpCachingClient() {
         test("bbe-examples/http_caching_client.bal");
     }
 
     @Test
-    public void testHttpCachingClientTest() {
-        test("bbe-examples/http_caching_client_test.bal");
-    }
-
-    @Test
     public void testHttpCircuitBreaker() {
         test("bbe-examples/http_circuit_breaker.bal");
-    }
-
-    @Test
-    public void testHttpCircuitBreakerTest() {
-        test("bbe-examples/http_circuit_breaker_test.bal");
     }
 
     @Test
@@ -570,18 +420,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testHttpClientDataBindingTest() {
-        test("bbe-examples/http_client_data_binding_test.bal");
-    }
-
-    @Test
     public void testHttpClientEndpoint() {
         test("bbe-examples/http_client_endpoint.bal");
-    }
-
-    @Test
-    public void testHttpClientEndpointTest() {
-        test("bbe-examples/http_client_endpoint_test.bal");
     }
 
     @Test
@@ -590,18 +430,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testHttpCompressionTest() {
-        test("bbe-examples/http_compression_test.bal");
-    }
-
-    @Test
     public void testHttpCors() {
         test("bbe-examples/http_cors.bal");
-    }
-
-    @Test
-    public void testHttpCorsTest() {
-        test("bbe-examples/http_cors_test.bal");
     }
 
     @Test
@@ -610,18 +440,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testHttpDataBindingTest() {
-        test("bbe-examples/http_data_binding_test.bal");
-    }
-
-    @Test
     public void testHttpDisableChunking() {
         test("bbe-examples/http_disable_chunking.bal");
-    }
-
-    @Test
-    public void testHttpDisableChunkingTest() {
-        test("bbe-examples/http_disable_chunking_test.bal");
     }
 
     @Test
@@ -630,18 +450,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testHttpFailoverTest() {
-        test("bbe-examples/http_failover_test.bal");
-    }
-
-    @Test
     public void testHttpFilters() {
         test("bbe-examples/http_filters.bal");
-    }
-
-    @Test
-    public void testHttpFiltersTest() {
-        test("bbe-examples/http_filters_test.bal");
     }
 
     @Test
@@ -650,28 +460,13 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testHttpLoadBalancerTest() {
-        test("bbe-examples/http_load_balancer_test.bal");
-    }
-
-    @Test
     public void testHttpRedirects() {
         test("bbe-examples/http_redirects.bal");
     }
 
     @Test
-    public void testHttpRedirectsTest() {
-        test("bbe-examples/http_redirects_test.bal");
-    }
-
-    @Test
     public void testHttpRetry() {
         test("bbe-examples/http_retry.bal");
-    }
-
-    @Test
-    public void testHttpRetryTest() {
-        test("bbe-examples/http_retry_test.bal");
     }
 
     @Test
@@ -682,21 +477,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     @Test
     public void testHttpTimeout() {
         test("bbe-examples/http_timeout.bal");
-    }
-
-    @Test
-    public void testHttpTimeoutTest() {
-        test("bbe-examples/http_timeout_test.bal");
-    }
-
-    @Test
-    public void testHttpToWebsocketUpgrade() {
-        test("bbe-examples/http_to_websocket_upgrade.bal");
-    }
-
-    @Test
-    public void testHttpToWebsocketUpgradeTest() {
-        test("bbe-examples/http_to_websocket_upgrade_te.balst");
     }
 
     @Test
@@ -712,11 +492,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     @Test
     public void testHttpsListener() {
         test("bbe-examples/https_listener.bal");
-    }
-
-    @Test
-    public void testHttpsListenerTest() {
-        test("bbe-examples/https_listener_test.bal");
     }
 
     @Test
@@ -840,23 +615,18 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testJwtIssueValidateTest() {
-        test("bbe-examples/jwt_issue_validate_test.bal");
-    }
-
-    @Test
     public void testJwtMockServer() {
         test("bbe-examples/jwt_mock_server.bal");
     }
 
     @Test
     public void testKafkaAuthenticationSaslPlainConsumer() {
-        test("bbe-examples/kafka_authentication_sasl_plain_consum.baler");
+        test("bbe-examples/kafka_authentication_sasl_plain_consumer.bal");
     }
 
     @Test
     public void testKafkaAuthenticationSaslPlainProducer() {
-        test("bbe-examples/kafka_authentication_sasl_plain_produc.baler");
+        test("bbe-examples/kafka_authentication_sasl_plain_producer.bal");
     }
 
     @Test
@@ -901,7 +671,7 @@ public class BbeExampleTest extends AbstractSegmentTest {
 
     @Test
     public void testLocalTransactionsWithHandlers() {
-        test("bbe-examples/local_transactions_with_handle.balrs");
+        test("bbe-examples/local_transactions_with_handlers.bal");
     }
 
     @Test
@@ -912,11 +682,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     @Test
     public void testLogApi() {
         test("bbe-examples/log_api.bal");
-    }
-
-    @Test
-    public void testLogApiTest() {
-        test("bbe-examples/log_api_test.bal");
     }
 
     @Test
@@ -945,18 +710,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testMutualSslTest() {
-        test("bbe-examples/mutual_ssl_test.bal");
-    }
-
-    @Test
     public void testMysqlBatchExecuteOperation() {
-        test("bbe-examples/mysql_batch_execute_operati.balon");
-    }
-
-    @Test
-    public void testMysqlBatchExecuteOperationTest() {
-        test("bbe-examples/mysql_batch_execute_operation_te.balst");
+        test("bbe-examples/mysql_batch_execute_operation.bal");
     }
 
     @Test
@@ -965,18 +720,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testMysqlCallStoredProceduresTest() {
-        test("bbe-examples/mysql_call_stored_procedures_te.balst");
-    }
-
-    @Test
     public void testMysqlComplexTypeQueries() {
         test("bbe-examples/mysql_complex_type_queries.bal");
-    }
-
-    @Test
-    public void testMysqlComplexTypeQueriesTest() {
-        test("bbe-examples/mysql_complex_type_queries_te.balst");
     }
 
     @Test
@@ -985,18 +730,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testMysqlExecuteOperationTest() {
-        test("bbe-examples/mysql_execute_operation_test.bal");
-    }
-
-    @Test
     public void testMysqlInitOptions() {
         test("bbe-examples/mysql_init_options.bal");
-    }
-
-    @Test
-    public void testMysqlInitOptionsTest() {
-        test("bbe-examples/mysql_init_options_test.bal");
     }
 
     @Test
@@ -1005,18 +740,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testMysqlParameterizedQueryTest() {
-        test("bbe-examples/mysql_parameterized_query_te.balst");
-    }
-
-    @Test
     public void testMysqlQueryOperation() {
         test("bbe-examples/mysql_query_operation.bal");
-    }
-
-    @Test
-    public void testMysqlQueryOperationTest() {
-        test("bbe-examples/mysql_query_operation_test.bal");
     }
 
     @Test
@@ -1030,18 +755,13 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testNonTransactionRetryTest() {
-        test("bbe-examples/non_transaction_retry_test.bal");
-    }
-
-    @Test
     public void testObjectAssignability() {
         test("bbe-examples/object_assignability.bal");
     }
 
     @Test
     public void testObjectConstructorExpression() {
-        test("bbe-examples/object_constructor_expressi.balon");
+        test("bbe-examples/object_constructor_expression.bal");
     }
 
     @Test
@@ -1080,18 +800,13 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testOptionalTypeTest() {
-        test("bbe-examples/optional_type_test.bal");
-    }
-
-    @Test
     public void testOrderMgmtService() {
         test("bbe-examples/order_mgmt_service.bal");
     }
 
     @Test
     public void testOverloadedMethodsConstructors() {
-        test("bbe-examples/overloaded_methods_constructo.balrs");
+        test("bbe-examples/overloaded_methods_constructors.bal");
     }
 
     @Test
@@ -1201,17 +916,17 @@ public class BbeExampleTest extends AbstractSegmentTest {
 
     @Test
     public void testRabbitmqConsumerWithClientAcknowledgement() {
-        test("bbe-examples/rabbitmq_consumer_with_client_acknowledgeme.balnt");
+        test("bbe-examples/rabbitmq_consumer_with_client_acknowledgement.bal");
     }
 
     @Test
     public void testRabbitmqConsumerWithDataBinding() {
-        test("bbe-examples/rabbitmq_consumer_with_data_bindi.balng");
+        test("bbe-examples/rabbitmq_consumer_with_data_binding.bal");
     }
 
     @Test
     public void testRabbitmqConsumerWithQosSettings() {
-        test("bbe-examples/rabbitmq_consumer_with_qos_settin.balgs");
+        test("bbe-examples/rabbitmq_consumer_with_qos_settings.bal");
     }
 
     @Test
@@ -1221,12 +936,12 @@ public class BbeExampleTest extends AbstractSegmentTest {
 
     @Test
     public void testRabbitmqTransactionConsumer() {
-        test("bbe-examples/rabbitmq_transaction_consum.baler");
+        test("bbe-examples/rabbitmq_transaction_consumer.bal");
     }
 
     @Test
     public void testRabbitmqTransactionProducer() {
-        test("bbe-examples/rabbitmq_transaction_produc.baler");
+        test("bbe-examples/rabbitmq_transaction_producer.bal");
     }
 
     @Test
@@ -1260,11 +975,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testRecordIoTest() {
-        test("bbe-examples/record_io_test.bal");
-    }
-
-    @Test
     public void testRecordOptionalFields() {
         test("bbe-examples/record_optional_fields.bal");
     }
@@ -1290,18 +1000,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testRequestWithMultipartsTest() {
-        test("bbe-examples/request_with_multiparts_test.bal");
-    }
-
-    @Test
     public void testResponseWithMultiparts() {
         test("bbe-examples/response_with_multiparts.bal");
-    }
-
-    @Test
-    public void testResponseWithMultipartsTest() {
-        test("bbe-examples/response_with_multiparts_te.balst");
     }
 
     @Test
@@ -1315,28 +1015,13 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testRetryTransactionsTest() {
-        test("bbe-examples/retry_transactions_test.bal");
-    }
-
-    @Test
     public void testSecuredClientWithBasicAuth() {
-        test("bbe-examples/secured_client_with_basic_au.balth");
-    }
-
-    @Test
-    public void testSecuredClientWithBasicAuthTest() {
-        test("bbe-examples/secured_client_with_basic_auth_te.balst");
+        test("bbe-examples/secured_client_with_basic_auth.bal");
     }
 
     @Test
     public void testSecuredClientWithJwtAuth() {
         test("bbe-examples/secured_client_with_jwt_auth.bal");
-    }
-
-    @Test
-    public void testSecuredClientWithJwtAuthTest() {
-        test("bbe-examples/secured_client_with_jwt_auth_te.balst");
     }
 
     @Test
@@ -1346,32 +1031,22 @@ public class BbeExampleTest extends AbstractSegmentTest {
 
     @Test
     public void testSecuredServiceWithBasicAuth1() {
-        test("bbe-examples/secured_service_with_basic_auth.bal_1");
+        test("bbe-examples/secured_service_with_basic_auth_1.bal");
     }
 
     @Test
     public void testSecuredServiceWithBasicAuth2() {
-        test("bbe-examples/secured_service_with_basic_auth.bal_2");
-    }
-
-    @Test
-    public void testSecuredServiceWithBasicAuthTest() {
-        test("bbe-examples/secured_service_with_basic_auth_te.balst");
+        test("bbe-examples/secured_service_with_basic_auth_2.bal");
     }
 
     @Test
     public void testSecuredServiceWithJwtAuth1() {
-        test("bbe-examples/secured_service_with_jwt_auth.bal_1");
+        test("bbe-examples/secured_service_with_jwt_auth_1.bal");
     }
 
     @Test
     public void testSecuredServiceWithJwtAuth2() {
-        test("bbe-examples/secured_service_with_jwt_auth.bal_2");
-    }
-
-    @Test
-    public void testSecuredServiceWithJwtAuthTest() {
-        test("bbe-examples/secured_service_with_jwt_auth_te.balst");
+        test("bbe-examples/secured_service_with_jwt_auth_2.bal");
     }
 
     @Test
@@ -1480,18 +1155,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testTaskSchedulerAppointmentTest() {
-        test("bbe-examples/task_scheduler_appointment_te.balst");
-    }
-
-    @Test
     public void testTaskSchedulerTimer() {
         test("bbe-examples/task_scheduler_timer.bal");
-    }
-
-    @Test
-    public void testTaskSchedulerTimerTest() {
-        test("bbe-examples/task_scheduler_timer_test.bal");
     }
 
     @Test
@@ -1515,73 +1180,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testTesterinaAssertions() {
-        test("bbe-examples/testerina_assertions.bal");
-    }
-
-    @Test
-    public void testTesterinaBeforeAndAfterEach() {
-        test("bbe-examples/testerina_before_and_after_ea.balch");
-    }
-
-    @Test
-    public void testTesterinaBeforeAndAfterGroups() {
-        test("bbe-examples/testerina_before_and_after_grou.balps");
-    }
-
-    @Test
-    public void testTesterinaBeforeAndAfterSuite() {
-        test("bbe-examples/testerina_before_and_after_sui.balte");
-    }
-
-    @Test
-    public void testTesterinaBeforeAndAfterTest() {
-        test("bbe-examples/testerina_before_and_after_te.balst");
-    }
-
-    @Test
-    public void testTesterinaDataDrivenTests() {
-        test("bbe-examples/testerina_data_driven_tests.bal");
-    }
-
-    @Test
-    public void testTesterinaGroupTests() {
-        test("bbe-examples/testerina_group_tests.bal");
-    }
-
-    @Test
-    public void testTesterinaGuaranteeTestExecutionOrder() {
-        test("bbe-examples/testerina_guarantee_test_execution_ord.baler");
-    }
-
-    @Test
-    public void testTesterinaMockingFunctionsMain() {
-        test("bbe-examples/testerina_mocking_functions_ma.balin");
-    }
-
-    @Test
-    public void testTesterinaMockingFunctionsTest() {
-        test("bbe-examples/testerina_mocking_functions_te.balst");
-    }
-
-    @Test
-    public void testTesterinaMockingObjectsMain() {
-        test("bbe-examples/testerina_mocking_objects_ma.balin");
-    }
-
-    @Test
-    public void testTesterinaMockingObjectsTest() {
-        test("bbe-examples/testerina_mocking_objects_te.balst");
-    }
-
-    @Test
     public void testTheMainFunction() {
         test("bbe-examples/the_main_function.bal");
-    }
-
-    @Test
-    public void testTheMainFunctionTest() {
-        test("bbe-examples/the_main_function_test.bal");
     }
 
     @Test
@@ -1595,18 +1195,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testTimeTest() {
-        test("bbe-examples/time_test.bal");
-    }
-
-    @Test
     public void testTracing() {
         test("bbe-examples/tracing.bal");
-    }
-
-    @Test
-    public void testTracingTest() {
-        test("bbe-examples/tracing_test.bal");
     }
 
     @Test
@@ -1640,11 +1230,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testTypeTestExpression() {
-        test("bbe-examples/type_test_expression.bal");
-    }
-
-    @Test
     public void testUdpSocketClient() {
         test("bbe-examples/udp_socket_client.bal");
     }
@@ -1655,18 +1240,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testUpgradeService() {
-        test("bbe-examples/upgrade_service.bal");
-    }
-
-    @Test
     public void testUrlEncodeDecode() {
         test("bbe-examples/url_encode_decode.bal");
-    }
-
-    @Test
-    public void testUrlEncodeDecodeTest() {
-        test("bbe-examples/url_encode_decode_test.bal");
     }
 
     @Test
@@ -1695,48 +1270,19 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testWebsocketBasicSampleTest() {
-        test("bbe-examples/websocket_basic_sample_test.bal");
-    }
-
-    @Test
     public void testWebsocketChatApplication() {
         test("bbe-examples/websocket_chat_application.bal");
     }
 
     @Test
-    public void testWebsocketChatApplicationTest() {
-        test("bbe-examples/websocket_chat_application_te.balst");
-    }
-
-    @Test
     public void testWebsocketClient() {
-        test("bbe-examples/websocket_client.bal");
-    }
-
-    @Test
-    public void testWebsocketCookie() {
-        test("bbe-examples/websocket_cookie.bal");
-    }
-
-    @Test
-    public void testWebsocketFailover() {
-        test("bbe-examples/websocket_failover.bal");
+        // TODO: Github Link Invalid
+        // test("bbe-examples/websocket_client.bal");
     }
 
     @Test
     public void testWebsocketProxyServer() {
         test("bbe-examples/websocket_proxy_server.bal");
-    }
-
-    @Test
-    public void testWebsocketProxyServerTest() {
-        test("bbe-examples/websocket_proxy_server_test.bal");
-    }
-
-    @Test
-    public void testWebsocketRetry() {
-        test("bbe-examples/websocket_retry.bal");
     }
 
     @Test
@@ -1760,23 +1306,8 @@ public class BbeExampleTest extends AbstractSegmentTest {
     }
 
     @Test
-    public void testWhileTest() {
-        test("bbe-examples/while_test.bal");
-    }
-
-    @Test
     public void testWorkerInteraction() {
         test("bbe-examples/worker_interaction.bal");
-    }
-
-    @Test
-    public void testWorkerInteractionTest() {
-        test("bbe-examples/worker_interaction_test.bal");
-    }
-
-    @Test
-    public void testWorkerTest() {
-        test("bbe-examples/worker_test.bal");
     }
 
     @Test
@@ -1797,11 +1328,6 @@ public class BbeExampleTest extends AbstractSegmentTest {
     @Test
     public void testXmlAttributes() {
         test("bbe-examples/xml_attributes.bal");
-    }
-
-    @Test
-    public void testXmlAttributesTest() {
-        test("bbe-examples/xml_attributes_test.bal");
     }
 
     @Test

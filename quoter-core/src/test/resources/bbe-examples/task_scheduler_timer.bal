@@ -1,5 +1,5 @@
 import ballerina/io;
-import ballerina/runtime;
+import ballerina/lang.runtime;
 import ballerina/task;
 
 // Defines a custom record type to use in the timer.
@@ -11,7 +11,7 @@ public type CounterContext record {|
 public function main() returns error? {
     // Initializes the timer scheduler using the interval value. The delay will
     // be equal to the interval if an initial delay is not provided.
-    task:Scheduler timer = new ({
+    task:Scheduler timer = check new ({
         intervalInMillis: 1000,
         initialDelayInMillis: 0
     });
@@ -27,7 +27,7 @@ public function main() returns error? {
     // Starts the timer.
     check timer.start();
 
-    runtime:sleep(4500);
+    runtime:sleep(4.5);
 
     // Cancels the timer. This will stop the timer and all the services
     // attached to it.
@@ -37,9 +37,9 @@ public function main() returns error? {
 }
 
 // The service, which will be attached to the timer.
-service timerService = service {
+service object{} timerService = service object {
     // The onTrigger resource, which will be invoked when the timer is triggered.
-    resource function onTrigger(CounterContext ctx) {
+    remote function onTrigger(CounterContext ctx) {
         ctx.count += 1;
         io:println(ctx.name, ": ", ctx.count);
     }

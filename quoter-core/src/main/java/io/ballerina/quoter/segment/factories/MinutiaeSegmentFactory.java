@@ -70,7 +70,8 @@ public class MinutiaeSegmentFactory {
         } else if (minutiae.kind() == SyntaxKind.END_OF_LINE_MINUTIAE) {
             methodName = CREATE_EOL_METHOD_NAME;
         } else if (minutiae.kind() == SyntaxKind.INVALID_NODE_MINUTIAE) {
-            throw new QuoterException("Invalid node minutiae found with text: " + minutiae.text());
+            throw new QuoterException("Invalid node minutiae found with text: " + minutiae.text() + " at " +
+                    minutiae.lineRange());
         } else {
             throw new QuoterException("Unexpected Minutiae found");
         }

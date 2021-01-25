@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    implementation name: 'ballerina-parser-2.0.0-Preview9-SNAPSHOT'
+    implementation name: 'ballerina-parser-2.0.0-alpha-SNAPSHOT'
     implementation project(":quoter-core")
     implementation('org.springframework.boot:spring-boot-starter-web')
 

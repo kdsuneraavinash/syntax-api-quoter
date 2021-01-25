@@ -128,7 +128,8 @@ public class NonTerminalSegmentFactory {
     private Segment createNodeListSegment(NodeList<Node> nodes, NodeFactoryMethodReference method, int paramIndex) {
         // Create a Segment array list from the child nodes.
         ArrayList<Segment> segments = new ArrayList<>();
-        nodes.forEach(node -> segments.add(nodeSegmentFactory.createNodeSegment(node)));
+        nodes.stream().filter(node -> !node.isMissing())
+                .forEach(node -> segments.add(nodeSegmentFactory.createNodeSegment(node)));
 
         String genericType = method.getParameterGeneric(paramIndex);
         String nodeListMethodName = (method.getParameterType(paramIndex) == SeparatedNodeList.class)
