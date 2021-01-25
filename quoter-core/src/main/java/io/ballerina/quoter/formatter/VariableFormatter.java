@@ -41,33 +41,11 @@ public class VariableFormatter extends SegmentFormatter {
     private static final String LEADING_MINUTIAE = "leadingMinutiae";
     private static final String TRAILING_MINUTIAE = "trailingMinutiae";
     private static final String TOKEN_SUFFIX = "Token";
-
-    private HashMap<String, Integer> variableCount;
     private final SegmentFormatter formatter;
+    private HashMap<String, Integer> variableCount;
 
     VariableFormatter() {
         formatter = new NoFormatter();
-    }
-
-    /**
-     * Data structure to hold string with an variable name.
-     */
-    private static class NamedContent {
-        final String name;
-        String content;
-
-        NamedContent(String type, Map<String, Integer> variableCount) {
-            // Find the variable name: var, var1, var2, ...
-            String varGenericName = type.substring(0, 1).toLowerCase(Locale.getDefault()) + type.substring(1);
-            int varGenericCount = variableCount.getOrDefault(varGenericName, 0);
-            this.name = varGenericName + (varGenericCount == 0 ? "" : String.valueOf(varGenericCount));
-            variableCount.put(varGenericName, varGenericCount + 1);
-        }
-
-        @Override
-        public String toString() {
-            return content;
-        }
     }
 
     @Override
@@ -93,22 +71,36 @@ public class VariableFormatter extends SegmentFormatter {
         NamedContent namedContent = new NamedContent(token.getType(), variableCount);
         NodeFactorySegment factorySegment = SegmentFactory.createNodeFactorySegment(token.getMethodName());
 
-        // Define minutiae
-        String trailingMinutiae = formatter.format(params.pop());
-        String leadingMinutiae = formatter.format(params.pop());
-        stringBuilder.append(LEADING_MINUTIAE).append(EQ_CHAR)
-                .append(leadingMinutiae)
-                .append(SEMICOLON_CHAR).append(NEWLINE_CHAR);
-        stringBuilder.append(TRAILING_MINUTIAE).append(EQ_CHAR)
-                .append(trailingMinutiae)
-                .append(SEMICOLON_CHAR).append(NEWLINE_CHAR);
+        // Define and add minutiae
+        boolean minutiaeNodesPresent = false;
+        if (params.size() >= 2) {
+            Segment lastSegment1 = params.get(params.size() - 1);
+            Segment lastSegment2 = params.get(params.size() - 2);
+            if (lastSegment1 instanceof NodeFactorySegment
+                    && lastSegment2 instanceof NodeFactorySegment
+                    && ((NodeFactorySegment) lastSegment1).isMinutiae()
+                    && ((NodeFactorySegment) lastSegment2).isMinutiae()) {
+                String trailingMinutiae = formatter.format(params.pop());
+                String leadingMinutiae = formatter.format(params.pop());
+                stringBuilder.append(LEADING_MINUTIAE).append(EQ_CHAR)
+                        .append(leadingMinutiae)
+                        .append(SEMICOLON_CHAR).append(NEWLINE_CHAR);
+                stringBuilder.append(TRAILING_MINUTIAE).append(EQ_CHAR)
+                        .append(trailingMinutiae)
+                        .append(SEMICOLON_CHAR).append(NEWLINE_CHAR);
+                minutiaeNodesPresent = true;
+            }
+        }
 
         // Add params and minutiae
         while (!params.isEmpty()) {
             factorySegment.addParameter(params.remove(0));
         }
-        factorySegment.addParameter(SegmentFactory.createCodeSegment(LEADING_MINUTIAE));
-        factorySegment.addParameter(SegmentFactory.createCodeSegment(TRAILING_MINUTIAE));
+
+        if (minutiaeNodesPresent) {
+            factorySegment.addParameter(SegmentFactory.createCodeSegment(LEADING_MINUTIAE));
+            factorySegment.addParameter(SegmentFactory.createCodeSegment(TRAILING_MINUTIAE));
+        }
 
         stringBuilder
                 .append(token.getType()).append(SPACE_CHAR)
@@ -156,5 +148,26 @@ public class VariableFormatter extends SegmentFormatter {
                 .append(SEMICOLON_CHAR).append(NEWLINE_CHAR).append(NEWLINE_CHAR);
         namedContent.content = stringBuilder.toString();
         return namedContent;
+    }
+
+    /**
+     * Data structure to hold string with an variable name.
+     */
+    private static class NamedContent {
+        final String name;
+        String content;
+
+        NamedContent(String type, Map<String, Integer> variableCount) {
+            // Find the variable name: var, var1, var2, ...
+            String varGenericName = type.substring(0, 1).toLowerCase(Locale.getDefault()) + type.substring(1);
+            int varGenericCount = variableCount.getOrDefault(varGenericName, 0);
+            this.name = varGenericName + (varGenericCount == 0 ? "" : String.valueOf(varGenericCount));
+            variableCount.put(varGenericName, varGenericCount + 1);
+        }
+
+        @Override
+        public String toString() {
+            return content;
+        }
     }
 }

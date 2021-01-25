@@ -37,6 +37,7 @@ public class NodeFactorySegment extends Segment implements Iterable<Segment> {
     private static final String PARAM_SEP_SIGN = ",";
     private static final String PARAM_CLOSE_SIGN = ")";
 
+    private final boolean isMinutiae;
     private final String methodName;
     protected final String genericType;
     private final List<Segment> parameters;
@@ -45,12 +46,21 @@ public class NodeFactorySegment extends Segment implements Iterable<Segment> {
         this.methodName = methodName;
         this.parameters = new ArrayList<>();
         this.genericType = genericType;
+        this.isMinutiae = false;
     }
 
     public NodeFactorySegment(String methodName) {
         this.methodName = methodName;
         this.parameters = new ArrayList<>();
         this.genericType = null;
+        this.isMinutiae = false;
+    }
+
+    public NodeFactorySegment(String methodName, boolean isMinutiae) {
+        this.methodName = methodName;
+        this.parameters = new ArrayList<>();
+        this.genericType = null;
+        this.isMinutiae = isMinutiae;
     }
 
     /**
@@ -98,6 +108,13 @@ public class NodeFactorySegment extends Segment implements Iterable<Segment> {
      */
     public String getType() {
         return methodName.substring(CREATE_PREFIX_LENGTH);
+    }
+
+    /**
+     * @return Whether this node factory creates a minutiae node.
+     */
+    public boolean isMinutiae() {
+        return isMinutiae;
     }
 
     /**

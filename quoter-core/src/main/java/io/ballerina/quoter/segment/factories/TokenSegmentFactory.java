@@ -46,6 +46,7 @@ public class TokenSegmentFactory {
         NodeFactorySegment root;
 
         // Decide on factory call and add parameters(except minutiae)
+        boolean canSkipMinutiae = false;
         if (token instanceof LiteralValueToken) {
             root = SegmentFactory.createNodeFactorySegment(CREATE_LITERAL_METHOD_NAME);
             root.addParameter(SegmentFactory.createSyntaxKindSegment(token.kind()));
@@ -53,12 +54,19 @@ public class TokenSegmentFactory {
         } else if (token instanceof IdentifierToken) {
             root = SegmentFactory.createNodeFactorySegment(CREATE_IDENTIFIER_METHOD_NAME);
             root.addParameter(SegmentFactory.createStringSegment(token.text()));
+            canSkipMinutiae = true;
         } else if (token instanceof DocumentationLineToken) {
             root = SegmentFactory.createNodeFactorySegment(CREATE_DOC_LINE_METHOD_NAME);
             root.addParameter(SegmentFactory.createStringSegment(token.text()));
         } else {
             root = SegmentFactory.createNodeFactorySegment(CREATE_TOKEN_METHOD_NAME);
             root.addParameter(SegmentFactory.createSyntaxKindSegment(token.kind()));
+            canSkipMinutiae = true;
+        }
+
+        // If minutiae can be skipped, dont add them.
+        if (canSkipMinutiae && token.leadingMinutiae().isEmpty() && token.trailingMinutiae().isEmpty()) {
+            return root;
         }
 
         // Add leading and trailing minutiae parameters to the call.

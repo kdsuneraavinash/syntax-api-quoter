@@ -41,6 +41,16 @@ public class SegmentFactory {
     }
 
     /**
+     * Creates a factory method to create minutiae.
+     *
+     * @param methodName Method name.
+     * @return Created segment node.
+     */
+    public static NodeFactorySegment createMinutiaeFactorySegment(String methodName) {
+        return new NodeFactorySegment(methodName, true);
+    }
+
+    /**
      * Creates a factory method to create given node type with the generic type.
      *
      * @param nodeType    Method name.

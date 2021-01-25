@@ -43,12 +43,12 @@ public class MinutiaeSegmentFactory {
      */
     public static Segment createMinutiaeListSegment(MinutiaeList minutiaeList) {
         if (minutiaeList.isEmpty()) {
-            return SegmentFactory.createNodeFactorySegment(CREATE_EMPTY_MINUTIAE_LIST_METHOD_NAME);
+            return SegmentFactory.createMinutiaeFactorySegment(CREATE_EMPTY_MINUTIAE_LIST_METHOD_NAME);
         }
 
         // If the list is not empty, create the factory segment and add every minutiae segment
         NodeFactorySegment minutiaeListMethod = SegmentFactory
-                .createNodeFactorySegment(CREATE_MINUTIAE_LIST_METHOD_NAME);
+                .createMinutiaeFactorySegment(CREATE_MINUTIAE_LIST_METHOD_NAME);
         minutiaeList.forEach(minutiae -> minutiaeListMethod.addParameter(createMinutiaeSegment(minutiae)));
         return minutiaeListMethod;
     }
