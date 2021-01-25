@@ -41,20 +41,8 @@ def mainCliClass = 'io.quoter.application.cli.QuoterCommandLine'
 // Compile Configuration
 compileJava {
     doFirst {
-        options.compilerArgs = [
-                '--module-path', classpath.asPath,
-        ]
+        options.compilerArgs = ['--module-path', classpath.asPath]
         classpath = files()
-    }
-}
-
-// Quoter command
-task quoter(type: JavaExec) {
-    main = mainCliClass
-    classpath = sourceSets.main.runtimeClasspath
-    if (project.hasProperty('props')) {
-        //noinspection GroovyAssignabilityCheck
-        args(project.property('props').split(' '))
     }
 }
 

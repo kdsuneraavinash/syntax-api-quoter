@@ -27,14 +27,22 @@ $ java -jar quoter-cli-1.0-SNAPSHOT.jar [OPTIONS]
 You can override the default properties passing arguments. 
 
 ```bash
-usage: ./quote [OPTIONS]
- -i,--input <arg>          input file path
- -o,--output <arg>         output file path
- -s,--stdout               output to stdout
- -f,--formatter <arg>      formatter name (none,default,variable)
- -u,--use-template <arg>    whether to use template (true/false)
- -t,--template <arg>       template to use (applicable only if use template is true)
- -p,--position <arg>       tab position to start (applicable only if use template is true)
+Usage: quoter [-hsuV] [-f=<formatter>] -i=<input> [-o=<output>] [-p=<position>]
+              [-t=<template>] [-x=<timeOut>]
+Syntax API Quoter for Ballerina Language.
+  -f, --formatter=<formatter>
+                             formatter name
+  -h, --help                 Show this help message and exit.
+  -i, --input=<input>        input file path
+  -o, --output=<output>      output file path
+  -p, --position=<position>  tab position to start (applicable only if use
+                               template is true)
+  -s, --stdout               output to stdout
+  -t, --template=<template>  template to use (applicable only if use template
+                               is true)
+  -u, --use-template         whether to use templates
+  -V, --version              Print version information and exit.
+  -x, --time-out=<timeOut>   time out for parsing
 ```
 
 If `--use-template` is set to true, the specified `--template` template file will be used along with the content 
