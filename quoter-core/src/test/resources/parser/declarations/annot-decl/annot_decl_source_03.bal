@@ -1,3 +1,0 @@
-annotation;
-
-annotation on type;

@@ -17,14 +17,9 @@
  */
 package io.ballerina.quoter.test.e2e;
 
-import io.ballerina.compiler.syntax.tree.Node;
 import io.ballerina.compiler.syntax.tree.SyntaxTree;
-import io.ballerina.tools.text.TextDocument;
-import io.ballerina.tools.text.TextDocuments;
 import io.ballerina.quoter.BallerinaQuoter;
 import io.ballerina.quoter.config.QuoterConfig;
-import io.ballerina.quoter.segment.Segment;
-import io.ballerina.quoter.segment.factories.NodeSegmentFactory;
 import io.ballerina.quoter.test.FileReaderUtils;
 import io.ballerina.quoter.test.TemplateCode;
 import io.ballerina.quoter.test.TestQuoterConfig;
@@ -39,24 +34,6 @@ import java.security.PrivilegedAction;
  */
 public abstract class AbstractSegmentTest {
     private static final String TEMPLATE_PACKAGE_NAME = "templatepkg.TemplateCodeImpl";
-
-    private static class SegmentClassLoader extends ClassLoader {
-    }
-
-    /**
-     * Return the created segment tree root node from the source code.
-     *
-     * @param sourceCode Content to parse.
-     * @param config     Configurations obj.
-     * @return Root segment node.
-     */
-    protected Segment getSegment(String sourceCode, QuoterConfig config) {
-        NodeSegmentFactory generator = NodeSegmentFactory.fromConfig(config);
-
-        TextDocument sourceCodeDocument = TextDocuments.from(sourceCode);
-        Node syntaxTreeNode = SyntaxTree.from(sourceCodeDocument).rootNode();
-        return generator.createNodeSegment(syntaxTreeNode);
-    }
 
     /**
      * Creates a segment tree and run it via dynamic class loading.
@@ -121,12 +98,13 @@ public abstract class AbstractSegmentTest {
      * Tests if the generated code for the given file (after being formatted with all the formatters)
      * is valid and the generated code creates the same source code when run.
      *
-     * @param directory  Name of the directory.
-     * @param filePrefix File name without .bal.
+     * @param fileName File name.
      */
-    protected void testAssertionFiles(String directory, String filePrefix) {
-        String fileName = directory + "/" + filePrefix + ".bal";
+    protected void test(String fileName) {
         String sourceCode = FileReaderUtils.readFileAsResource(fileName).trim();
         testAssertionContent(sourceCode);
+    }
+
+    private static class SegmentClassLoader extends ClassLoader {
     }
 }

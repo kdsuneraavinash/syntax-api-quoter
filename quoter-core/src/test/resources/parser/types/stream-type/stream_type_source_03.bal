@@ -1,1 +1,0 @@
-type mysteam stream<string>;

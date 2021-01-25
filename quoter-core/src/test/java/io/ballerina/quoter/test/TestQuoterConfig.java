@@ -24,7 +24,7 @@ import io.ballerina.quoter.config.QuoterConfig;
  * Overrides several parameters with test parameters.
  */
 public class TestQuoterConfig extends QuoterConfig {
-    private static final String CHILD_NAMES_JSON = "child-names.json";
+    private static final String CHILD_NAMES_JSON = "syntax_tree_descriptor.json";
 
     private final String templateFile;
     private final String tabStart;
@@ -43,7 +43,7 @@ public class TestQuoterConfig extends QuoterConfig {
                 return templateFile;
             case EXTERNAL_FORMATTER_TAB_START:
                 return tabStart;
-            case INTERNAL_NODE_CHILDREN_JSON:
+            case INTERNAL_SYNTAX_TREE_DESCRIPTOR:
                 return CHILD_NAMES_JSON;
             case EXTERNAL_FORMATTER_NAME:
                 return formatterName;

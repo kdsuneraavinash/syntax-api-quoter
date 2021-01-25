@@ -1,1 +1,0 @@
-xmlns as ns1;

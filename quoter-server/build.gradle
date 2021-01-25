@@ -36,22 +36,14 @@ repositories {
 }
 
 dependencies {
-    implementation name: 'ballerina-parser-2.0.0-Preview6-SNAPSHOT'
-
+    implementation name: 'ballerina-parser-2.0.0-Preview9-SNAPSHOT'
     implementation project(":quoter-core")
-    implementation('org.springframework.boot:spring-boot-starter-web') {
-        exclude group: 'org.springframework.boot', module: 'pring-boot-starter-json'
-    }
+    implementation('org.springframework.boot:spring-boot-starter-web')
 
-    testImplementation('org.testng:testng:6.14.3') {
-        because("To test the core functionality")
-    }
-    testImplementation(group: 'net.openhft', name: 'compiler', version: '2.4.0') {
-        because("To dynamically compile and test generated code")
-    }
+    testImplementation('org.testng:testng:6.14.3')
+    testImplementation(group: 'net.openhft', name: 'compiler', version: '2.4.0')
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-        because("To test the spring endpoint")
     }
 }
 

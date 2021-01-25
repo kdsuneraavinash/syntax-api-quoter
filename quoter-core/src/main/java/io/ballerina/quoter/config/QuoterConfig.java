@@ -23,7 +23,6 @@ import io.ballerina.quoter.BallerinaQuoter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -32,18 +31,11 @@ import java.util.Objects;
  * Base configuration file format.
  */
 public abstract class QuoterConfig {
-    public static final String INTERNAL_NODE_CHILDREN_JSON = "internal.node.children";
+    public static final String INTERNAL_SYNTAX_TREE_DESCRIPTOR = "internal.syntax.tree.descriptor";
     public static final String EXTERNAL_FORMATTER_TEMPLATE = "external.formatter.template";
     public static final String EXTERNAL_FORMATTER_USE_TEMPLATE = "external.formatter.use.template";
     public static final String EXTERNAL_FORMATTER_TAB_START = "external.formatter.tab.start";
     public static final String EXTERNAL_FORMATTER_NAME = "external.formatter.name";
-
-    /**
-     * Cache map signature required for config parsing.
-     */
-    private static class CacheMap extends HashMap<String, List<String>> {
-        private static final long serialVersionUID = 42L;
-    }
 
     /**
      * Get the value assigned to the key.
@@ -79,12 +71,13 @@ public abstract class QuoterConfig {
      * @return Parsed content of the children json file.
      */
     public Map<String, List<String>> readChildNamesJson() {
-        String jsonFile = getOrThrow(INTERNAL_NODE_CHILDREN_JSON);
+        String jsonFile = getOrThrow(INTERNAL_SYNTAX_TREE_DESCRIPTOR);
         ClassLoader classLoader = BallerinaQuoter.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(jsonFile);
         Gson gson = new Gson();
         Objects.requireNonNull(inputStream, "File open failed");
         InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-        return gson.fromJson(reader, CacheMap.class);
+        SyntaxTreeDescriptor syntaxTreeDescriptor = gson.fromJson(reader, SyntaxTreeDescriptor.class);
+        return syntaxTreeDescriptor.getChildNames();
     }
 }
