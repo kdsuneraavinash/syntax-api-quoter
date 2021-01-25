@@ -38,7 +38,7 @@ repositories {
 dependencies {
     implementation name: 'ballerina-parser-2.0.0-Preview6-SNAPSHOT'
 
-    implementation project(":quoter")
+    implementation project(":quoter-core")
     implementation('org.springframework.boot:spring-boot-starter-web') {
         exclude group: 'org.springframework.boot', module: 'pring-boot-starter-json'
     }

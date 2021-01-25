@@ -1,4 +1,4 @@
 rootProject.name = 'syntax-api-quoter'
-include 'quoter'
 include 'quoter-cli'
 include 'quoter-server'
+include 'quoter-core'
