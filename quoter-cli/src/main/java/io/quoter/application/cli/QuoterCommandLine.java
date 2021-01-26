@@ -27,7 +27,7 @@ import java.util.concurrent.Callable;
 /**
  * CLI Entry point of the programme.
  */
-@CommandLine.Command(name = "quoter",
+@CommandLine.Command(name = "quote",
         mixinStandardHelpOptions = true, version = "quoter shell version 0.0.1",
         description = "Syntax API Quoter for Ballerina Language.")
 public class QuoterCommandLine implements Callable<Integer> {

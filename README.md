@@ -126,7 +126,7 @@ external.ignore.minutiae=false
 
 ## Generating child names JSON
 
-Application projects rely on [`syntax_tree_descriptor.json`](quoter/src/main/resources/quoter.properties) file to get the names of the children of each node type. If the Syntax API is changed, this file should be updated. Simply copy and put this file from [`treegen source`](https://github.com/ballerina-platform/ballerina-lang/blob/master/compiler/ballerina-treegen/src/main/resources/syntax_tree_descriptor.json).
+Application projects rely on [`syntax_tree_descriptor.json`](quoter-core/src/main/resources/quoter.properties) file to get the names of the children of each node type. If the Syntax API is changed, this file should be updated. Simply copy and put this file from [`treegen source`](https://github.com/ballerina-platform/ballerina-lang/blob/master/compiler/ballerina-treegen/src/main/resources/syntax_tree_descriptor.json).
 
 ## Implementation
 
