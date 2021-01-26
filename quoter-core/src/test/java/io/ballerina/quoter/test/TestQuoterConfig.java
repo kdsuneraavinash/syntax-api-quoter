@@ -57,6 +57,8 @@ public class TestQuoterConfig extends QuoterConfig {
                 return DEFAULT_TEST_PARSER;
             case EXTERNAL_PARSER_TIMEOUT:
                 return DEFAULT_TEST_TIMEOUT_MS;
+            case EXTERNAL_IGNORE_MINUTIAE:
+                return String.valueOf(false);
             default:
                 throw new RuntimeException("Unknown key: " + key);
         }
