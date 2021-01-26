@@ -57,9 +57,17 @@ public class QuoterCommandLine implements Callable<Integer> {
     private String template = "template.txt";
 
     @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
-    @CommandLine.Option(names = {"-p", "--position"},
+    @CommandLine.Option(names = {"--position"},
             description = "tab position to start (applicable only if use template is true)")
     private int position = 2;
+
+    @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
+    @CommandLine.Option(names = {"-p", "--parser"}, description = "parser name")
+    private QuoterCmdConfig.CodeParser parser = QuoterCmdConfig.CodeParser.MODULE;
+
+    @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
+    @CommandLine.Option(names = {"-x", "--timeout"}, description = "parser timeout (in milliseconds)")
+    private long parserTimeout = 2500;
 
     /**
      * Launch the Quoter.
@@ -82,6 +90,8 @@ public class QuoterCommandLine implements Callable<Integer> {
                 .formatterUseTemplate(useTemplate)
                 .formatterTemplate(template)
                 .formatterTabStart(position)
+                .parser(parser)
+                .parserTimeout(parserTimeout)
                 .build();
 
         String source = configuration.readInputFile();

@@ -36,10 +36,12 @@ public class QuoterSpringConfig extends QuoterPropertiesConfig {
 
     private final String formatter;
     private final boolean useTemplate;
+    private final String parser;
 
-    public QuoterSpringConfig(String formatter, boolean useTemplate) {
+    public QuoterSpringConfig(String formatter, boolean useTemplate, String parser) {
         this.formatter = formatter;
         this.useTemplate = useTemplate;
+        this.parser = parser;
     }
 
     @Override
@@ -49,6 +51,8 @@ public class QuoterSpringConfig extends QuoterPropertiesConfig {
                 return formatter;
             case EXTERNAL_FORMATTER_USE_TEMPLATE:
                 return String.valueOf(useTemplate);
+            case EXTERNAL_PARSER_NAME:
+                return parser;
             default:
                 return super.getOrThrow(key);
         }

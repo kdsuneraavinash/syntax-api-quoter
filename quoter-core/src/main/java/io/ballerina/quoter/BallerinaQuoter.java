@@ -19,13 +19,11 @@
 package io.ballerina.quoter;
 
 import io.ballerina.compiler.syntax.tree.Node;
-import io.ballerina.compiler.syntax.tree.SyntaxTree;
 import io.ballerina.quoter.config.QuoterConfig;
 import io.ballerina.quoter.formatter.SegmentFormatter;
+import io.ballerina.quoter.parser.QuoterParser;
 import io.ballerina.quoter.segment.Segment;
 import io.ballerina.quoter.segment.factories.NodeSegmentFactory;
-import io.ballerina.tools.text.TextDocument;
-import io.ballerina.tools.text.TextDocuments;
 
 /**
  * Ballerina Quoter programme main class.
@@ -41,12 +39,12 @@ public class BallerinaQuoter {
      */
     public static String run(String sourceCode, QuoterConfig config) {
         try {
+            QuoterParser parser = QuoterParser.fromConfig(config);
             NodeSegmentFactory factory = NodeSegmentFactory.fromConfig(config);
             SegmentFormatter formatter = SegmentFormatter.getFormatter(config);
 
             // 1. Get the syntax tree
-            TextDocument sourceCodeDocument = TextDocuments.from(sourceCode);
-            Node syntaxTreeNode = SyntaxTree.from(sourceCodeDocument).rootNode();
+            Node syntaxTreeNode = parser.parse(sourceCode);
             // 2. Convert tree to a segment tree
             Segment segment = factory.createNodeSegment(syntaxTreeNode);
             // 3. Format using the formatter

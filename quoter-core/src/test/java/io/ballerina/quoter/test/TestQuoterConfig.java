@@ -26,6 +26,9 @@ import io.ballerina.quoter.config.QuoterConfig;
  */
 public class TestQuoterConfig extends QuoterConfig {
     private static final String CHILD_NAMES_JSON = "syntax_tree_descriptor.json";
+    private static final String DEFAULT_TEST_PARSER = "module";
+    private static final String DEFAULT_TEST_TIMEOUT_MS = "10000";
+
 
     private final String templateFile;
     private final String tabStart;
@@ -50,6 +53,10 @@ public class TestQuoterConfig extends QuoterConfig {
                 return formatterName;
             case EXTERNAL_FORMATTER_USE_TEMPLATE:
                 return String.valueOf(true);
+            case EXTERNAL_PARSER_NAME:
+                return DEFAULT_TEST_PARSER;
+            case EXTERNAL_PARSER_TIMEOUT:
+                return DEFAULT_TEST_TIMEOUT_MS;
             default:
                 throw new RuntimeException("Unknown key: " + key);
         }

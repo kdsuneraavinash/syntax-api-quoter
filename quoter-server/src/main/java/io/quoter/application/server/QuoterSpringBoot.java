@@ -58,10 +58,11 @@ public class QuoterSpringBoot {
     public String codeResponse(
             @RequestParam(value = "format", defaultValue = "default") String formatterName,
             @RequestParam(value = "template", defaultValue = "true") boolean useTemplate,
+            @RequestParam(value = "parser", defaultValue = "true") String parser,
             @RequestBody(required = false) String source) {
         try {
             source = Objects.requireNonNullElse(source, "");
-            QuoterSpringConfig config = new QuoterSpringConfig(formatterName, useTemplate);
+            QuoterSpringConfig config = new QuoterSpringConfig(formatterName, useTemplate, parser);
             return BallerinaQuoter.run(source, config);
         } catch (Exception e) {
             logger.error(e.getMessage());
