@@ -21,6 +21,7 @@ package io.ballerina.quoter.segment.factories;
 import io.ballerina.compiler.syntax.tree.DocumentationLineToken;
 import io.ballerina.compiler.syntax.tree.IdentifierToken;
 import io.ballerina.compiler.syntax.tree.LiteralValueToken;
+import io.ballerina.compiler.syntax.tree.NodeFactory;
 import io.ballerina.compiler.syntax.tree.Token;
 import io.ballerina.quoter.segment.NodeFactorySegment;
 
@@ -33,6 +34,12 @@ public class TokenSegmentFactory {
     private static final String CREATE_DOC_LINE_METHOD_NAME = "createDocumentationLineToken";
     private static final String CREATE_TOKEN_METHOD_NAME = "createToken";
 
+    private final boolean ignoreMinutiae;
+
+    public TokenSegmentFactory(boolean ignoreMinutiae) {
+        this.ignoreMinutiae = ignoreMinutiae;
+    }
+
     /**
      * Converts Token to Segment.
      * Handles minutia of the token as well.
@@ -40,7 +47,7 @@ public class TokenSegmentFactory {
      * @param token Token node to convert.
      * @return Created segment.
      */
-    public static NodeFactorySegment createTokenSegment(Token token) {
+    public NodeFactorySegment createTokenSegment(Token token) {
         // Decide on the method and add all parameters required, except for minutiae parameters.
         // If there are no minutiae and the token constructor supports calling without minutiae, use that call.
         NodeFactorySegment root;
@@ -64,11 +71,18 @@ public class TokenSegmentFactory {
             canSkipMinutiae = true;
         }
 
-        // If minutiae can be skipped, dont add them.
-        if (canSkipMinutiae && token.leadingMinutiae().isEmpty() && token.trailingMinutiae().isEmpty()) {
+        // If minutiae can be skipped, don't add them. Don't add if ignore flag is set.
+        boolean hasNoMinutiae = token.leadingMinutiae().isEmpty() && token.trailingMinutiae().isEmpty();
+        if (canSkipMinutiae && (ignoreMinutiae || hasNoMinutiae)) {
             return root;
         }
 
+        if (ignoreMinutiae) {
+            // If ignored bu cannot skip, add empty minutiae to obey ignore flag
+            root.addParameter(MinutiaeSegmentFactory.createMinutiaeListSegment(NodeFactory.createEmptyMinutiaeList()));
+            root.addParameter(MinutiaeSegmentFactory.createMinutiaeListSegment(NodeFactory.createEmptyMinutiaeList()));
+            return root;
+        }
         // Add leading and trailing minutiae parameters to the call.
         root.addParameter(MinutiaeSegmentFactory.createMinutiaeListSegment(token.leadingMinutiae()));
         root.addParameter(MinutiaeSegmentFactory.createMinutiaeListSegment(token.trailingMinutiae()));

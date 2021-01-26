@@ -27,15 +27,21 @@ import io.ballerina.quoter.segment.Segment;
 import io.ballerina.quoter.segment.factories.cache.ChildNamesCache;
 import io.ballerina.quoter.segment.factories.cache.NodeFactoryMethodCache;
 
+import static io.ballerina.quoter.config.QuoterConfig.EXTERNAL_IGNORE_MINUTIAE;
+
 /**
  * Handles {@link Node} to {@link Segment} conversion.
  */
 public class NodeSegmentFactory {
     private final NonTerminalSegmentFactory nonTerminalSegmentFactory;
+    private final TokenSegmentFactory tokenSegmentFactory;
 
-    private NodeSegmentFactory(ChildNamesCache childNamesCache, NodeFactoryMethodCache methodCache) {
+    private NodeSegmentFactory(ChildNamesCache childNamesCache,
+                               NodeFactoryMethodCache methodCache,
+                               boolean ignoreMinutiae) {
         this.nonTerminalSegmentFactory =
                 new NonTerminalSegmentFactory(this, childNamesCache, methodCache);
+        this.tokenSegmentFactory = new TokenSegmentFactory(ignoreMinutiae);
     }
 
     /**
@@ -47,7 +53,8 @@ public class NodeSegmentFactory {
     public static NodeSegmentFactory fromConfig(QuoterConfig config) {
         return new NodeSegmentFactory(
                 ChildNamesCache.fromConfig(config),
-                NodeFactoryMethodCache.create()
+                NodeFactoryMethodCache.create(),
+                config.getBooleanOrThrow(EXTERNAL_IGNORE_MINUTIAE)
         );
     }
 
@@ -61,7 +68,7 @@ public class NodeSegmentFactory {
         if (node == null) {
             return SegmentFactory.createNullSegment();
         } else if (node instanceof Token) {
-            return TokenSegmentFactory.createTokenSegment((Token) node);
+            return tokenSegmentFactory.createTokenSegment((Token) node);
         } else if (node instanceof NonTerminalNode) {
             return nonTerminalSegmentFactory.createNonTerminalSegment((NonTerminalNode) node);
         } else {

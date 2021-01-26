@@ -32,6 +32,7 @@ function App() {
             formatter: state.options.formatter,
             template: state.options.template,
             parser: state.options.parser,
+            ignoreMinutiae: state.options.ignoreMinutiae,
         });
         setState({ ...state, generated, loading: false });
     }
@@ -40,10 +41,10 @@ function App() {
      * Change the options of the app.
      * @param options New options object.
      */
-    const setOptions = ({ template, formatter, parser, theme }) => {
+    const setOptions = ({ template, formatter, parser, ignoreMinutiae, theme }) => {
         setState({
             ...state,
-            options: { template, formatter, parser },
+            options: { template, formatter, parser, ignoreMinutiae },
             ide: { theme },
         });
     }

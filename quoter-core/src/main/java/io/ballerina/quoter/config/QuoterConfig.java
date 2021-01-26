@@ -39,6 +39,7 @@ public abstract class QuoterConfig {
     public static final String EXTERNAL_FORMATTER_NAME = "external.formatter.name";
     public static final String EXTERNAL_PARSER_NAME = "external.parser.name";
     public static final String EXTERNAL_PARSER_TIMEOUT = "external.parser.timeout";
+    public static final String EXTERNAL_IGNORE_MINUTIAE = "external.ignore.minutiae";
 
     /**
      * Get the value assigned to the key.

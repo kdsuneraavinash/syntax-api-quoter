@@ -59,10 +59,16 @@ public class QuoterSpringBoot {
             @RequestParam(value = "format", defaultValue = "default") String formatterName,
             @RequestParam(value = "template", defaultValue = "true") boolean useTemplate,
             @RequestParam(value = "parser", defaultValue = "true") String parser,
+            @RequestParam(value = "ignoreMinutiae", defaultValue = "false") boolean ignoreMinutiae,
             @RequestBody(required = false) String source) {
         try {
             source = Objects.requireNonNullElse(source, "");
-            QuoterSpringConfig config = new QuoterSpringConfig(formatterName, useTemplate, parser);
+            QuoterSpringConfig config = new QuoterSpringConfig.Builder()
+                    .formatter(formatterName)
+                    .useTemplate(useTemplate)
+                    .parser(parser)
+                    .ignoreMinutiae(ignoreMinutiae)
+                    .build();
             return BallerinaQuoter.run(source, config);
         } catch (Exception e) {
             logger.error(e.getMessage());

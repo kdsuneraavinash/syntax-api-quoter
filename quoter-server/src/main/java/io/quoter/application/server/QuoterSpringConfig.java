@@ -37,11 +37,13 @@ public class QuoterSpringConfig extends QuoterPropertiesConfig {
     private final String formatter;
     private final boolean useTemplate;
     private final String parser;
+    private final boolean ignoreMinutiae;
 
-    public QuoterSpringConfig(String formatter, boolean useTemplate, String parser) {
-        this.formatter = formatter;
-        this.useTemplate = useTemplate;
-        this.parser = parser;
+    private QuoterSpringConfig(Builder builder) {
+        this.formatter = builder.formatter;
+        this.useTemplate = builder.useTemplate;
+        this.parser = builder.parser;
+        this.ignoreMinutiae = builder.ignoreMinutiae;
     }
 
     @Override
@@ -53,6 +55,8 @@ public class QuoterSpringConfig extends QuoterPropertiesConfig {
                 return String.valueOf(useTemplate);
             case EXTERNAL_PARSER_NAME:
                 return parser;
+            case EXTERNAL_IGNORE_MINUTIAE:
+                return String.valueOf(ignoreMinutiae);
             default:
                 return super.getOrThrow(key);
         }
@@ -82,6 +86,39 @@ public class QuoterSpringConfig extends QuoterPropertiesConfig {
                 return getOrThrow(INTERNAL_WEB_DEFAULT_TEMPLATE);
             default:
                 throw new QuoterException("Formatter template unknown.");
+        }
+    }
+
+    public static class Builder {
+        private String formatter;
+        private boolean useTemplate;
+        private String parser;
+        private boolean ignoreMinutiae;
+
+        public Builder formatter(String formatter) {
+            this.formatter = formatter;
+            return Builder.this;
+        }
+
+        public Builder useTemplate(boolean useTemplate) {
+            this.useTemplate = useTemplate;
+            return Builder.this;
+        }
+
+        public Builder parser(String parser) {
+            this.parser = parser;
+            return Builder.this;
+        }
+
+        public Builder ignoreMinutiae(boolean ignoreMinutiae) {
+            this.ignoreMinutiae = ignoreMinutiae;
+            return Builder.this;
+        }
+
+        public QuoterSpringConfig build() {
+            Objects.requireNonNull(this.formatter, "Formatter not set");
+            Objects.requireNonNull(this.parser, "Parser not set");
+            return new QuoterSpringConfig(this);
         }
     }
 }
