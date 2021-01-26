@@ -27,7 +27,7 @@ import java.util.concurrent.Callable;
 /**
  * CLI Entry point of the programme.
  */
-@CommandLine.Command(name = "ballerina syntax api quoter",
+@CommandLine.Command(name = "quoter",
         mixinStandardHelpOptions = true, version = "quoter shell version 0.0.1",
         description = "Syntax API Quoter for Ballerina Language.")
 public class QuoterCommandLine implements Callable<Integer> {
@@ -69,6 +69,10 @@ public class QuoterCommandLine implements Callable<Integer> {
     @CommandLine.Option(names = {"-x", "--timeout"}, description = "parser timeout (in milliseconds)")
     private long parserTimeout = 2500;
 
+    @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
+    @CommandLine.Option(names = {"-m", "--ignore-minutiae"}, description = "whether to ignore minutiae (whitespaces)")
+    private boolean ignoreMinutiae = false;
+
     /**
      * Launch the Quoter.
      *
@@ -92,6 +96,7 @@ public class QuoterCommandLine implements Callable<Integer> {
                 .formatterTabStart(position)
                 .parser(parser)
                 .parserTimeout(parserTimeout)
+                .ignoreMinutiae(ignoreMinutiae)
                 .build();
 
         String source = configuration.readInputFile();

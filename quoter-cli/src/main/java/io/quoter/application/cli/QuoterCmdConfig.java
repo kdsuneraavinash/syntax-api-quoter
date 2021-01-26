@@ -49,6 +49,7 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
     private final CodeFormatter formatter;
     private final CodeParser parser;
     private final long parserTimeout;
+    private final boolean ignoreMinutiae;
 
     private QuoterCmdConfig(Builder builder) {
         this.inputFile = builder.inputFile;
@@ -60,6 +61,7 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
         this.formatterTabStart = builder.formatterTabStart;
         this.parser = builder.parser;
         this.parserTimeout = builder.parserTimeout;
+        this.ignoreMinutiae = builder.ignoreMinutiae;
     }
 
     /**
@@ -98,6 +100,8 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
                 return parser.name;
             case EXTERNAL_PARSER_TIMEOUT:
                 return String.valueOf(parserTimeout);
+            case EXTERNAL_IGNORE_MINUTIAE:
+                return String.valueOf(ignoreMinutiae);
             default:
                 return super.getOrThrow(key);
         }
@@ -181,6 +185,7 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
         private int formatterTabStart;
         private CodeParser parser;
         private long parserTimeout;
+        private boolean ignoreMinutiae;
 
         public Builder inputFile(String inputFile) {
             this.inputFile = inputFile;
@@ -224,6 +229,11 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
 
         public Builder parserTimeout(long parserTimeout) {
             this.parserTimeout = parserTimeout;
+            return Builder.this;
+        }
+
+        public Builder ignoreMinutiae(boolean ignoreMinutiae) {
+            this.ignoreMinutiae = ignoreMinutiae;
             return Builder.this;
         }
 
