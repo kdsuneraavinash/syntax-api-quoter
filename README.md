@@ -120,6 +120,8 @@ external.formatter.tab.start=2
 external.parser.name=module
 #Timeout for the parser (milliseconds)
 external.parser.timeout=100
+#Whether to discard minutiae info
+external.ignore.minutiae=false
 ```
 
 ## Generating child names JSON
