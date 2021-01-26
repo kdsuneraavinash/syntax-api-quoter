@@ -37,4 +37,8 @@ external.formatter.use.template=false
 external.formatter.template=template.txt
 #Tab position in template mode
 external.formatter.tab.start=2
+#Parser to use
+external.parser.name=module
+#Timeout for the parser (milliseconds)
+external.parser.timeout=100
 ```

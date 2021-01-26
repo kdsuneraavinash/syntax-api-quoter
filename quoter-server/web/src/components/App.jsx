@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-import {AppStateProvider, InitialState, Fetch} from "./AppState";
+import { AppStateProvider, InitialState, Fetch } from "./AppState";
 import BallerinaCodeEditor from "./BallerinaCodeEditor";
 import JavaCodeEditor from "./JavaCodeEditor";
 import OverlayLoader from "./OverlayLoader";
@@ -16,7 +16,7 @@ function App() {
      * @param code Modified ballerina code.
      */
     const setCode = (code) => {
-        setState({...state, code});
+        setState({ ...state, code });
     }
 
     /**
@@ -26,40 +26,41 @@ function App() {
      * @returns {Promise<void>}
      */
     const sendRequest = async () => {
-        setState({...state, loading: true});
+        setState({ ...state, loading: true });
         const generated = await Fetch({
             code: state.code,
             formatter: state.options.formatter,
-            template: state.options.template
+            template: state.options.template,
+            parser: state.options.parser,
         });
-        setState({...state, generated, loading: false});
+        setState({ ...state, generated, loading: false });
     }
 
     /**
      * Change the options of the app.
      * @param options New options object.
      */
-    const setOptions = ({template, formatter, theme}) => {
+    const setOptions = ({ template, formatter, parser, theme }) => {
         setState({
             ...state,
-            options: {template, formatter},
-            ide: {theme},
+            options: { template, formatter, parser },
+            ide: { theme },
         });
     }
 
     return (
-        <AppStateProvider value={{state, setCode, sendRequest, setOptions}}>
-            <OverlayLoader/>
-            <NavBar/>
+        <AppStateProvider value={{ state, setCode, sendRequest, setOptions }}>
+            <OverlayLoader />
+            <NavBar />
             <div className="row p-0 m-0">
                 <div className="col-sm-6 col-12 p-0">
-                    <BallerinaCodeEditor/>
+                    <BallerinaCodeEditor />
                 </div>
                 <div className="col-sm-6 col-12 p-0">
-                    <JavaCodeEditor/>
+                    <JavaCodeEditor />
                 </div>
             </div>
-            <PlayButton/>
+            <PlayButton />
         </AppStateProvider>
     );
 }

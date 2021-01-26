@@ -47,6 +47,8 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
     private final String outputFile;
     private final boolean outputSysOut;
     private final CodeFormatter formatter;
+    private final CodeParser parser;
+    private final long parserTimeout;
 
     private QuoterCmdConfig(Builder builder) {
         this.inputFile = builder.inputFile;
@@ -56,6 +58,8 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
         this.formatterUseTemplate = builder.formatterUseTemplate;
         this.formatterTemplate = builder.formatterTemplate;
         this.formatterTabStart = builder.formatterTabStart;
+        this.parser = builder.parser;
+        this.parserTimeout = builder.parserTimeout;
     }
 
     /**
@@ -90,6 +94,10 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
                 return String.valueOf(outputSysOut);
             case EXTERNAL_FORMATTER_NAME:
                 return formatter.name;
+            case EXTERNAL_PARSER_NAME:
+                return parser.name;
+            case EXTERNAL_PARSER_TIMEOUT:
+                return String.valueOf(parserTimeout);
             default:
                 return super.getOrThrow(key);
         }
@@ -130,6 +138,21 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
     }
 
     /**
+     * Parser to use.
+     */
+    public enum CodeParser {
+        STATEMENT("statement"),
+        EXPRESSION("expression"),
+        MODULE("module");
+
+        private final String name;
+
+        CodeParser(String name) {
+            this.name = name;
+        }
+    }
+
+    /**
      * Code formatter to use in the formatter.
      */
     public enum CodeFormatter {
@@ -156,6 +179,8 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
         private boolean formatterUseTemplate;
         private String formatterTemplate;
         private int formatterTabStart;
+        private CodeParser parser;
+        private long parserTimeout;
 
         public Builder inputFile(String inputFile) {
             this.inputFile = inputFile;
@@ -189,6 +214,16 @@ public class QuoterCmdConfig extends QuoterPropertiesConfig {
 
         public Builder formatterTabStart(int formatterTabStart) {
             this.formatterTabStart = formatterTabStart;
+            return Builder.this;
+        }
+
+        public Builder parser(CodeParser parser) {
+            this.parser = parser;
+            return Builder.this;
+        }
+
+        public Builder parserTimeout(long parserTimeout) {
+            this.parserTimeout = parserTimeout;
             return Builder.this;
         }
 

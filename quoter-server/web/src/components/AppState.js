@@ -6,11 +6,12 @@ const SERVER_ENDPOINT = "/generate";
  *
  * @param code Ballerina Code to Parse
  * @param formatter Formatter type
+ * @param parser Parser type
  * @param template Whether to use template
  * @returns {Promise<string>} Generated code
  */
-export const Fetch = async ({code, formatter, template}) => {
-    const url = `${SERVER_ENDPOINT}?format=${formatter}&template=${template}`;
+export const Fetch = async ({ code, formatter, parser, template }) => {
+    const url = `${SERVER_ENDPOINT}?format=${formatter}&template=${template}&parser=${parser}`;
     const response = await fetch(url, {
         method: 'POST',
         body: code,
@@ -30,7 +31,8 @@ export const InitialState = {
     },
     options: {
         formatter: "default",
-        template: true
+        template: true,
+        parser: "module"
     }
 };
 
