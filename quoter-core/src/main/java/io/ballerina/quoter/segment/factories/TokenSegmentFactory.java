@@ -21,6 +21,7 @@ package io.ballerina.quoter.segment.factories;
 import io.ballerina.compiler.syntax.tree.DocumentationLineToken;
 import io.ballerina.compiler.syntax.tree.IdentifierToken;
 import io.ballerina.compiler.syntax.tree.LiteralValueToken;
+import io.ballerina.compiler.syntax.tree.NodeFactory;
 import io.ballerina.compiler.syntax.tree.Token;
 import io.ballerina.quoter.segment.NodeFactorySegment;
 
@@ -76,6 +77,12 @@ public class TokenSegmentFactory {
             return root;
         }
 
+        if (ignoreMinutiae) {
+            // If ignored bu cannot skip, add empty minutiae to obey ignore flag
+            root.addParameter(MinutiaeSegmentFactory.createMinutiaeListSegment(NodeFactory.createEmptyMinutiaeList()));
+            root.addParameter(MinutiaeSegmentFactory.createMinutiaeListSegment(NodeFactory.createEmptyMinutiaeList()));
+            return root;
+        }
         // Add leading and trailing minutiae parameters to the call.
         root.addParameter(MinutiaeSegmentFactory.createMinutiaeListSegment(token.leadingMinutiae()));
         root.addParameter(MinutiaeSegmentFactory.createMinutiaeListSegment(token.trailingMinutiae()));
