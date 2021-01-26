@@ -7,11 +7,12 @@ const SERVER_ENDPOINT = "/generate";
  * @param code Ballerina Code to Parse
  * @param formatter Formatter type
  * @param parser Parser type
+ * @param ignoreMinutiae Whether to ignore minutiae
  * @param template Whether to use template
  * @returns {Promise<string>} Generated code
  */
-export const Fetch = async ({ code, formatter, parser, template }) => {
-    const url = `${SERVER_ENDPOINT}?format=${formatter}&template=${template}&parser=${parser}`;
+export const Fetch = async ({ code, formatter, parser, ignoreMinutiae, template }) => {
+    const url = `${SERVER_ENDPOINT}?format=${formatter}&template=${template}&parser=${parser}&ignoreMinutiae=${ignoreMinutiae}`;
     const response = await fetch(url, {
         method: 'POST',
         body: code,
@@ -32,7 +33,8 @@ export const InitialState = {
     options: {
         formatter: "default",
         template: true,
-        parser: "module"
+        parser: "module",
+        ignoreMinutiae: false,
     }
 };
 

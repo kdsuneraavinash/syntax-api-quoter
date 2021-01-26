@@ -9,6 +9,7 @@ function SettingsModal() {
 
     const [formatter, setFormatter] = useState(options.formatter);
     const [parser, setParser] = useState(options.parser);
+    const [ignoreMinutiae, setIgnoreMinutiae] = useState(options.ignoreMinutiae);
     const [template, setTemplate] = useState(options.template);
     const [theme, setTheme] = useState(ide.theme);
 
@@ -16,7 +17,7 @@ function SettingsModal() {
      * Save changed options.
      */
     const saveChanges = () => {
-        setOptions({ template, formatter, parser, theme });
+        setOptions({ template, formatter, parser, ignoreMinutiae, theme });
     }
 
     return (
@@ -50,6 +51,18 @@ function SettingsModal() {
                                         id="template" />
                                     <label className="form-check-label" htmlFor="template">
                                         Use Java template
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div className="form-group">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox"
+                                        onChange={(e) => setIgnoreMinutiae(e.target.checked)}
+                                        checked={ignoreMinutiae}
+                                        id="ignoreMinutiae" />
+                                    <label className="form-check-label" htmlFor="ignoreMinutiae">
+                                        Ignore minutiae nodes (whitespaces, comments, ...)
                                     </label>
                                 </div>
                             </div>
